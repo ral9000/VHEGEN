@@ -1,0 +1,18 @@
+[A'.A"],[1]: I2 even, I4 even
+[A'.A"],[-1]: I2 odd, I4 odd
+[A''.A"],[1]: I1&I2 ee_or_oo, I3&I4 ee_or_oo
+[A''.A"],[-1]: I1&I2 eo_or_oe, I3&I4 eo_or_oe
+[E'.A'],[1]: all nr
+[E'.A'],[-1]: all na
+[E'.A"],[1]: I even
+[E'.A"],[-1]: I odd
+[E''.A'],[1]: 3m even
+[E''.A'],[-1]: 3m odd
+[E''.A"],[1]: 3m&I ee_or_oo
+[E''.A"],[-1]: 3m&I eo_or_oe
+[E'.E'],[1]: all nr
+[E'.E'],[-1]: all na
+[E'.E"],[1]: m even
+[E'.E"],[-1]: m odd
+[E''.E"],[1]: 3n even
+[E''.E"],[-1]: 3n odd

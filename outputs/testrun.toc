@@ -1,0 +1,19 @@
+\contentsline {section}{\numberline {1}Vibronic interaction}{2}% 
+\contentsline {section}{\numberline {2}Vibronic Hamiltonian operator in the complex $E$ basis}{2}% 
+\contentsline {section}{\numberline {3}Matrix element expansions in the complex $E$ basis}{2}% 
+\contentsline {subsection}{\numberline {3.1}Order: 0}{2}% 
+\contentsline {subsection}{\numberline {3.2}Order: 1}{2}% 
+\contentsline {subsection}{\numberline {3.3}Order: 2}{3}% 
+\contentsline {subsection}{\numberline {3.4}Order: 3}{4}% 
+\contentsline {subsection}{\numberline {3.5}Order: 4}{5}% 
+\contentsline {subsection}{\numberline {3.6}Order: 5}{6}% 
+\contentsline {subsection}{\numberline {3.7}Order: 6}{9}% 
+\contentsline {section}{\numberline {4}Vibronic Hamiltonian operator in the real $E$ basis}{13}% 
+\contentsline {section}{\numberline {5}Matrix element expansions in the real $E$ basis}{14}% 
+\contentsline {subsection}{\numberline {5.1}Order: 0}{14}% 
+\contentsline {subsection}{\numberline {5.2}Order: 1}{14}% 
+\contentsline {subsection}{\numberline {5.3}Order: 2}{15}% 
+\contentsline {subsection}{\numberline {5.4}Order: 3}{16}% 
+\contentsline {subsection}{\numberline {5.5}Order: 4}{16}% 
+\contentsline {subsection}{\numberline {5.6}Order: 5}{18}% 
+\contentsline {subsection}{\numberline {5.7}Order: 6}{20}% 

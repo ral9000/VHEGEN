@@ -1,0 +1,45 @@
+[A1.A1],[1,0]: all na
+[A1.A1],[-1,0]: all na
+[A1.A1],[1,-1]: all na
+[A1.A2],[1,0]: all na
+[A1.A2],[-1,0]: all na
+[A1.A2],[1,-1]: all na
+[A2.A2],[1,0]: all na
+[A2.A2],[-1,0]: all na
+[A2.A2],[1,-1]: all na
+[A1.B1],[1,0]: all nr
+[A1.B1],[-1,0]: all na
+[A1.B1],[1,-1]: all na
+[A1.B2],[1,0]: all na
+[A1.B2],[-1,0]: all nr
+[A1.B2],[1,-1]: all na
+[A2.B1],[1,0]: I1 even
+[A2.B1],[-1,0]: I1 odd
+[A2.B1],[1,-1]: I1 even,I2 odd
+[A2.B2],[1,0]: I1 odd
+[A2.B2],[-1,0]: I1 even
+[A2.B2],[1,-1]: I1 odd,I2 even
+[B1.B1],[1,0]: all nr
+[B1.B1],[-1,0]: all na
+[B1.B1],[1,-1]: all na
+[B2.B2],[1,0]: all na
+[B2.B2],[-1,0]: all nr
+[B2.B2],[1,-1]: all na
+[B1.B2],[1,0]: b%oe nz
+[B1.B2],[-1,0]: b%eo nz
+[B1.B2],[1,-1]: broe&bieo nz
+[E.A1],[1,0]: cos nz
+[E.A1],[-1,0]: sin nz
+[E.A1],[1,-1]: br%% nz
+[E.B1],[1,0]: cos nz
+[E.B1],[-1,0]: sin nz
+[E.B1],[1,-1]: br%% nz
+[E.A2],[1,0]: I1 even,I2 odd
+[E.A2],[-1,0]: I1 odd,I2 even
+[E.A2],[1,-1]: I1 even,I2 odd
+[E.B2],[1,0]: cos nz if m odd,sin nz if m even
+[E.B2],[-1,0]: sin nz if m odd,cos nz if m even
+[E.B2],[1,-1]: br%% nz if m odd,bi%% nz if m even
+[E.E],[1,0]: cos nz
+[E.E],[-1,0]: sin nz
+[E.E],[1,-1]: br%% nz

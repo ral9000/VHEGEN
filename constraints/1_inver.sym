@@ -1,0 +1,38 @@
+[AG.AG],[1]: all nr
+[AG.AG],[-1]: all na
+[AG.AU],[1]: bI2 even
+[AG.AU],[-1]: bI2 odd
+[AU.AU],[1]: I1&bI2 ee_or_oo,I3&b14 ee_or_oo
+[AU.AU],[-1]: I1&bI2 eo_or_oe,I3&b14 eo_or_oe
+[AG.BG],[1]: all nr
+[AG.BG],[-1]: all na
+[AG.BU],[1]: all nr
+[AG.BU],[-1]: all na
+[AU.BG],[1]: I1 even,I2 even
+[AU.BG],[-1]: I1 odd,I2 odd
+[AU.BU],[1]: I1 even,I2 even
+[AU.BU],[-1]: I1 odd,I2 odd
+[BG.BU],[1]: a%ee nz
+[BG.BU],[-1]: a%oo nz
+[EG.AG],[1]: all nr
+[EG.AG],[-1]: all na
+[EU.AG],[1]: all nr
+[EU.AG],[-1]: all na
+[EG.AU],[1]: I even
+[EG.AU],[-1]: I odd
+[EU.AU],[1]: I even
+[EU.AU],[-1]: I odd
+[EG.BG],[1]: all nr
+[EG.BG],[-1]: all na
+[EU.BG],[1]: all nr
+[EU.BG],[-1]: all na
+[EG.BU],[1]: m even
+[EG.BU],[-1]: m odd
+[EU.BU],[1]: m even
+[EU.BU],[-1]: m odd
+[EG.EG],[1]: all nr
+[EG.EG],[-1]: all na
+[EU.EU],[1]: all nr
+[EU.EU],[-1]: all na
+[EG.EU],[1]: m1 even
+[EG.EU],[-1]: m1 odd

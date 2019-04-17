@@ -1,0 +1,10 @@
+[E.A1],[1,-1]: cr%% nz
+[E.A1],[-1,1]: ci%% nz
+[E.B1],[1,-1]: cr%% nz
+[E.B1],[-1,1]: ci%% nz
+[E.A2],[1,-1]: I1 even,I2 odd
+[E.A2],[-1,1]: I1 odd,I2 even
+[E.B2],[1,-1]: cr%% nz if n even,ci%% nz if n odd
+[E.B2],[-1,1]: cr%% nz if n odd,ci%% nz if n even
+[E.E],[1,-1]: cr%% nz
+[E.E],[-1,1]: ci%% nz

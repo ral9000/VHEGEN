@@ -1,0 +1,45 @@
+[A1.A1],[1,0]: all nr
+[A1.A1],[-1,0]: all na
+[A1.A1],[1,-1]: all na
+[A1.A2],[1,0]: bI2 even
+[A1.A2],[-1,0]: bI2 odd
+[A1.A2],[1,-1]: bI2 even,bI4 odd
+[A2.A2],[1,0]: I1&bI2 ee_or_oo
+[A2.A2],[-1,0]: I1&bI2 eo_or_oe
+[A2.A2],[1,-1]: I1&bI2 ee_or_oo,I3&bI4 eo_or_oe
+[A1.B1],[1,0]: all nr
+[A1.B1],[-1,0]: all na
+[A1.B1],[1,-1]: all na
+[A1.B2],[1,0]: all nr
+[A1.B2],[-1,0]: all na
+[A1.B2],[1,-1]: all na
+[A2.B1],[1,0]: I1 even
+[A2.B1],[-1,0]: I1 odd
+[A2.B1],[1,-1]: I1 even,I2 odd
+[A2.B2],[1,0]: I1 even
+[A2.B2],[-1,0]: I1 odd
+[A2.B2],[1,-1]: I1 even,I2 odd
+[B1.B1],[1,0]: all nr
+[B1.B1],[-1,0]: all na
+[B1.B1],[1,-1]: all na
+[B2.B2],[1,0]: all nr
+[B2.B2],[-1,0]: all na
+[B2.B2],[1,-1]: all na
+[B1.B2],[1,0]: a%ee nz
+[B1.B2],[-1,0]: a%oo nz
+[B1.B2],[1,-1]: aree&aioo nz
+[E.A1],[1,0]: cos nz
+[E.A1],[-1,0]: sin nz
+[E.A1],[1,-1]: ar%% nz
+[E.B1],[1,0]: cos nz
+[E.B1],[-1,0]: sin nz
+[E.B1],[1,-1]: ar%% nz
+[E.A2],[1,0]: I1 even,I2 odd
+[E.A2],[-1,0]: I1 odd,I2 even
+[E.A2],[1,-1]: I1 even,I2 odd
+[E.B2],[1,0]: cos nz if m even,sin nz if m odd
+[E.B2],[-1,0]: sin nz if m even,cos nz if m odd
+[E.B2],[1,-1]: ar%% nz if m even,ai%% nz if m odd
+[E.E],[1,0]: cos nz
+[E.E],[-1,0]: sin nz
+[E.E],[1,-1]: ar%% nz

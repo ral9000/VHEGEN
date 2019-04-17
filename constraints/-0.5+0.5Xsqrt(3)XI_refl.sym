@@ -1,0 +1,12 @@
+[A1.A1],[1,-1]: all na
+[A1.A1],[-1,1]: all na
+[A1.A2],[1,-1]: all na
+[A1.A2],[-1,1]: all na
+[A2.A2],[1,-1]: all na
+[A2.A2],[-1,1]: all na
+[E.A1],[1,-1]: br%% nz
+[E.A1],[-1,1]: bi%% nz
+[E.A2],[1,-1]: I1 even,I2 odd
+[E.A2],[-1,1]: I1 odd,I2 even
+[E.E],[1,-1]: br%% nz
+[E.E],[-1,1]: bi%% nz
