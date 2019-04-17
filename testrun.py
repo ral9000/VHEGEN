@@ -1,24 +1,19 @@
+#VHEGEN testrun script
 
-test = [] + []
+import vhegen as VHE
 
-print(test)
+problem = VHE.inp.prepare_input('D3h',"E''","e'+e'",'0,6','testrun')
 
-# #VHEGEN testrun script
+vhegen_instance = VHE.VHEGEN(problem)
 
-# import vhegen as VHE
+print(vhegen_instance.return_init())
 
-# problem = VHE.inp.prepare_input('D3h',"E''","e'+e'",'0,6','testrun')
+vhegen_instance.set_e_coordinates('both')
 
-# vhegen_instance = VHE.VHEGEN(problem)
+vhegen_instance.set_basis('both')
 
-# print(vhegen_instance.return_init())
+vhegen_instance.auto()
 
-# vhegen_instance.set_e_coordinates('both')
+vhegen_instance.pdflatex()
 
-# vhegen_instance.set_basis('both')
-
-# vhegen_instance.auto()
-
-# vhegen_instance.pdflatex()
-
-# print('\nTestrun complete without errors.')
+print('\nTestrun complete without errors.')
