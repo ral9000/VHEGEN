@@ -1,13 +1,10 @@
 # VHEGEN: A vibronic Hamiltonian expansion generator for trigonal and tetragonal polyatomic systems
 
-VHEGEN (V-ibronic H-amiltonian E-xpansion GEN-erator) is a Python package capable of symbolically generating arbitrarily high order expansion formulas for vibronic Hamiltonians. The program covers all >6000 Jahn-Teller and pseudo-Jahn-Teller problems in trigonal and tetragonal symmetries with up to two vibrational modes.
-
-For an in-depth description to VHEGEN, please see the associated paper: [future_doi]().
-
+VHEGEN (V-ibronic H-amiltonian E-xpansion GEN-erator) is a Python package capable of symbolically generating arbitrarily high order expansion formulas for Jahn-Teller and pseudo-Jahn-Teller Hamiltonians. 
 
 ## Scope 
 
-VHEGEN can currently generate vibronic Hamiltonians expanded in vibrational coordinates for all (p)JT problems of trigonal and tetragonal symmetries including up to two vibrational modes. Therefore it covers all unimodal and bimodal (p)JT problems in point groups: C3, C3v, C3h, D3, D3h, D3d, C4, S4, C4v, C4h, D4, D4h, and D2d.
+VHEGEN covers all bimodal Jahn-Teller and pseudo-Jahn-Teller problems in trigonal and tetragonal symmetries, i.e) point groups: C3, C3v, C3h, D3, D3h, D3d, C4, S4, C4v, C4h, D4, D4h, and D2d. Unimodal problems are treated as special cases of their bimodal analogues and hence also covered.
 
 ## Compatibility 
 
