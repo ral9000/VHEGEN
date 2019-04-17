@@ -1,8 +1,8 @@
-# VHEGEN: A V-ibronic H-amiltonian E-xpansion GEN-erator for trigonal and tetragonal polyatomic systems
+# VHEGEN: A vibronic Hamiltonian expansion generator for trigonal and tetragonal polyatomic systems
 
 [future link](placeholder).
 
-VHEGEN is a Python package capable of symbolically generating arbitrarily high order expansion formulas for vibronic Hamiltonians. The program covers all >6000 Jahn-Teller and pseudo-Jahn-Teller problems in trigonal and tetragonal symmetries with up to two vibrational modes.
+VHEGEN (V-ibronic H-amiltonian E-xpansion GEN-erator) is a Python package capable of symbolically generating arbitrarily high order expansion formulas for vibronic Hamiltonians. The program covers all >6000 Jahn-Teller and pseudo-Jahn-Teller problems in trigonal and tetragonal symmetries with up to two vibrational modes.
 
 ## Scope 
 
@@ -20,6 +20,10 @@ Python 2.7+/3.5+ in Linux, Windows, and macOS are supported.
 * [a TeX distribution](http://www.tug.org/interest.html#free)
 
 VHEGEN requires base Python 2.7+/3.5+ and external libraries Sympy and Numpy. It is highly recommended the system also has a TeX distribution installed, such as TeX Live. A TeX installation will allow VHEGEN to execute `pdflatex` on the output `.tex` file and generate a LaTeX-typeset output `.pdf` file. If `pip` is installed, the Python dependencies for VHEGEN can be installed via `pip install -r requirements.txt` in the main package directory.
+
+## Installation
+
+Installation of the `VHEGEN` package is as simple as uncompressing the master `vhegen_pkg` folder to the user's preferred write-allowed directory. This primes the program for procedural use as an executable script, as well as for importing as a package local to the installation directory.
 
 # Using VHEGEN procedurally
 
