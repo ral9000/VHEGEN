@@ -1,9 +1,11 @@
 
-# VHEGEN
+# VHEGEN: A Vibronic Hamiltonian Expansion GENerator for trigonal and tetragonal polyatomic systems
 
-[VHEGEN: A Vibronic Hamiltonian Expansion GENerator for trigonal and tetragonal polyatomic systems](placeholder_link).
+# Setup
 
-* VHEGEN is a Python package capable of generating the Hamiltonian operator expressions for all possible Jahn-Teller and pseudo Jahn-Teller problems of trigonal and tetragonal symmetry, for up to two vibrational modes, at an arbitrarily high order of expansion. VHEGEN may be used as an executable script or as an importable package.
+[future link to paper](placeholder).
+
+* VHEGEN (V-ibronic H-amiltonian E-xpansion GEN-erator) is a Python package capable of symbolically generating arbitrarily high order expansion formulas for vibronic Hamiltonians. The program covers all >6000 Jahn-Teller and pseudo-Jahn-Teller problems in trigonal and tetragonal symmetries with up to two vibrational modes.
 
 ## Compatibility 
 
@@ -11,18 +13,14 @@ Python 2.7+/3.5+ in Linux, Windows, and macOS are supported.
 
 ## Dependencies
 
-VHEGEN requires base Python 2.7+/3.5+ and Python computer algebra system module Sympy. It is highly recommended the system also has a LaTeX/TeX distribution installed, such as TeX Live. A LaTeX/TeX installation will allow VHEGEN to execute `pdflatex` on the output TEX file and generate a LaTeX-typeset output PDF.
-
-Required:
-
 * [Python 2.7+/3.5+](https://www.python.org/)
 * [sympy](https://www.sympy.org)
 * [numpy](https://www.numpy.org/)
 * [a TeX distribution](http://www.tug.org/interest.html#free)
 
-If pip is installed, the Python dependencies for VHEGEN can be installed via `pip install -r requirements.txt` in the main package directory.
+VHEGEN requires base Python 2.7+/3.5+ and external libraries Sympy and Numpy. It is highly recommended the system also has a TeX distribution installed, such as TeX Live. A TeX installation will allow VHEGEN to execute `pdflatex` on the output `.tex` file and generate a LaTeX-typeset output `.pdf` file. If `pip` is installed, the Python dependencies for VHEGEN can be installed via `pip install -r requirements.txt` in the main package directory.
 
-# User Guide
+# Using VHEGEN procedurally
 
 ## Configuration
 
@@ -80,6 +78,6 @@ Configuration file arguments:
 
 * `.pdf` output
 
-## VHEGEN as a package
+# Using VHEGEN as a package
 
 The VHEGEN as a package section.
