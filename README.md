@@ -13,11 +13,11 @@ VHEGEN has been tested with Python 2.7 and 3.7 on Linux, macOS, and Windows oper
 ## Dependencies
 
 * [Python 2.7+/3.5+](https://www.python.org/)
-* [sympy](https://www.sympy.org)
-* [numpy](https://www.numpy.org/)
+* [SymPy](https://www.sympy.org)
+* [NumPy](https://www.numpy.org/)
 * [a TeX distribution](http://www.tug.org/interest.html#free)
 
-VHEGEN requires base Python 2.7+/3.5+ and external libraries Sympy and Numpy. It is highly recommended the system also has a TeX distribution installed, such as TeX Live. A TeX installation will allow VHEGEN to execute `pdflatex` on the output `.tex` file and generate a LaTeX-typeset output `.pdf` file. If `pip` is installed, the Python dependencies for VHEGEN can be installed via `pip install -r requirements.txt` in the main package directory.
+VHEGEN requires base Python 2.7+/3.5+ and external libraries SymPy and NumPy. It is highly recommended the system also has a TeX distribution installed, such as TeX Live. A TeX installation will allow VHEGEN to execute `pdflatex` on the output `.tex` file and generate a LaTeX-typeset output `.pdf` file. If `pip` is installed, the Python dependencies for VHEGEN can be installed via `pip install -r requirements.txt` in the main package directory.
 
 ## Installation
 
