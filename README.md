@@ -8,7 +8,7 @@ VHEGEN covers all bimodal Jahn-Teller and pseudo-Jahn-Teller problems in trigona
 
 ## Compatibility 
 
-VHEGEN has been tested with Python 2.7 and 3.7 on Linux, macOS, and Windows operating systems.
+VHEGEN has been tested with Python 2.7 and 3.7 on Linux, macOS, and Windows 10 operating systems.
 
 ## Dependencies
 
