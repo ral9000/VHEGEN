@@ -12,7 +12,7 @@ VHEGEN has been tested with Python 2.7 and 3.7 on Linux, macOS, and Windows 10 o
 
 ## Dependencies
 
-* [Python 2.7+/3.5+](https://www.python.org/)
+* [Python 2.7/3.7](https://www.python.org/)
 * [SymPy](https://www.sympy.org)
 * [NumPy](https://www.numpy.org/)
 * [a TeX distribution](http://www.tug.org/interest.html#free)
