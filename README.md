@@ -1,6 +1,6 @@
 # VHEGEN: A vibronic Hamiltonian expansion generator for trigonal and tetragonal polyatomic systems
 
-VHEGEN (V-ibronic H-amiltonian E-xpansion GEN-erator) is a Python package capable of symbolically generating arbitrarily high order expansion formulas for Jahn-Teller and pseudo-Jahn-Teller Hamiltonians. 
+VHEGEN (V-ibronic H-amiltonian E-xpansion GEN-erator) is a Python package capable of symbolically generating arbitrarily high order expansion formulas for Jahn-Teller and pseudo-Jahn-Teller Hamiltonians in vibrational coordinates. 
 
 ## Scope 
 
