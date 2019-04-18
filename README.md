@@ -82,6 +82,8 @@ vhegen_instance = vhe.VHEGEN(params)
 
 ## Generating matrix element expansions
 
+Below are the methods which must be sequentially called to generate the full matrix element expansions for a specified vibronic problem. For more details about the methods described, please see Section 5.3 in the associated paper.
+
 | Method                              | Description                                                                                                                                                                                                                       |
 |-------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `set_e_coords(e_coordinate_system)` | Defines the coordinate system for problems involving e-type vibrational modes. Allowed arguments are `cart`, `pol`, or `both`.                                                                                                    |
