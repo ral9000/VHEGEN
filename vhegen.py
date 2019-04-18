@@ -16,7 +16,7 @@ class VHEGEN:
         self.modes = problem_dct['modes']
         self.orders = problem_dct['o']
         self.filename = problem_dct['f']
-        self.e_coords = 'pol' #default coord system
+        self.e_coords = 'pol' #default coordinate system
         self.basis = 'complex' #default E state basis
 
     def set_basis(self,basis):
@@ -112,13 +112,13 @@ class VHEGEN:
         if hasattr(self,'count'):
             count_string = ''
             if self.basis == 'complex' or self.basis == 'both':
-                count_string += '\nNumber of terms (complex): \n\n'
+                count_string += '\nNumber of fitting parameters (complex): \n\n'
                 for o in self.count:
                     count_string += 'Order '+str(o)+':\n'
                     for e in self.count[o]:
                         count_string += 'H_'+str(e) +': '+str(self.count[o][e]) +'\n'
             if self.basis == 'real' or self.basis == 'both':
-                count_string += '\nNumber of terms (real): \n\n'
+                count_string += '\nNumber of fitting parameters (real): \n\n'
                 for o in self.real_count:
                     count_string += 'Order '+str(o)+':\n'
                     for e in self.real_count[o]:
@@ -188,9 +188,9 @@ class VHEGEN:
         for o in self.orders:
             TeX_expansions += R'\subsection{Order: '+str(o)+R'}'+'\n'
             if self.basis == 'real':
-                TeX_expansions += R'Number of terms: ' + out.realcount_format2TeX(self.real_count[o]) + '\n'
+                TeX_expansions += R'Number of fitting parameters: ' + out.realcount_format2TeX(self.real_count[o]) + '\n'
             else:
-                TeX_expansions += R'Number of terms: ' + out.count_format2TeX(self.count[o]) + '\n'
+                TeX_expansions += R'Number of fitting parameters: ' + out.count_format2TeX(self.count[o]) + '\n'
             if self.e_coords == 'both':
                 TeX_expansions += R'\subsubsection*{Polar e-coordinates:}'+'\n'
                 for e in self.expansions[o]:
@@ -208,7 +208,7 @@ class VHEGEN:
             TeX_expansions_real = ''
             for o in self.orders:
                 TeX_expansions_real += R'\subsection{Order: '+str(o)+R'}'+'\n'
-                TeX_expansions_real += R'Number of terms: ' + out.realcount_format2TeX(self.real_count[o]) + '\n'
+                TeX_expansions_real += R'Number of fitting parameters: ' + out.realcount_format2TeX(self.real_count[o]) + '\n'
                 if self.e_coords == 'both':
                     TeX_expansions_real += R'\subsubsection*{Polar e-coordinates:}'+'\n'
                     for e in self.expansions_real[o]:

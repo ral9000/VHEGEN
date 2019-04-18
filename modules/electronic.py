@@ -9,7 +9,6 @@ def kdelta(p,q):
     else:
         return 0
 
-# this doesnt recognize the prime and double prime states --> need to do a string.replace()
 def refl_parity(state):
     if ('2' in state):
         return 2
@@ -27,8 +26,6 @@ def inver_parity(state):
         return 0
 
 def get_eigenvals(symmetry, states):
-    #this function is analogous to looking up Table 1 in Hickman et al (2018)
-    #eigenval order: [Cn_rot,v_refle(Re),v_refle(Im),inver]
     n = int(symmetry[1])
     if len(states)==2:      
         if n % 2 == 1: #odd case
@@ -252,7 +249,7 @@ def get_dependent_elements(expansion_dct,count,obj):
                 else:
                     all_expansions_dct[o][dep_e] = expansion_dct[o][e]
                     dependent_count[o][dep_e] = count[o][e]
-    return all_expansions_dct#,dependent_count
+    return all_expansions_dct
 
 def format_matrix_element(matrix_element):
     m_e = str(matrix_element)
