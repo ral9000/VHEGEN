@@ -94,9 +94,9 @@ Below are the methods which must be sequentially called to generate the full mat
 | `get_expansions()`                  | Generate term-by-term expansions at all specified orders, storing them in a nested dictionary in attribute `expansions`. If `basis` is set to `both`, expansions in the real basis will be stored in attribute `real_expansions`. |
 
 
-## The `auto` method
+## The `auto()` method
 
-The methods discussed in the previous subsection can be immediately performed after initialization of a VHEGEN instance by the `auto` method. This method sequentially calls all mandaory processes discussed above to generate the `expansions` attribute including all matrix elements. It will also transform to the real E component basis if applicable. Below is an example script of how one would ggenerate the expanded matrix elements for a specific vibronic Hamiltonian at the desired orders.
+The methods discussed in the previous subsection can be immediately performed after initialization of a VHEGEN instance by the `auto()` method. This method sequentially calls all mandaory processes discussed above to generate the `expansions` attribute including all matrix elements. It will also transform to the real E component basis if applicable. Below is an example script of how one would ggenerate the expanded matrix elements for a specific vibronic Hamiltonian at the desired orders.
 ~~~~
 import vhegen as vhe 
 
@@ -112,14 +112,6 @@ print(vhegen_instance.expansions)
 ## Expansion output
 
 TBC
-
-## Fitting of expansion coefficients
-
-This subsection will discuss the parameter fitting process.
-
-# Contributing
-
-This section will discuss how others can contribute to the VHEGEN code.
 
 # Authors
 
