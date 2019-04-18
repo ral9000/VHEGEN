@@ -82,7 +82,7 @@ vhegen_instance = vhe.VHEGEN(params)
 
 ## Generating matrix element expansions
 
-
+TBC
 
 
 ## The `auto` method
@@ -101,6 +101,8 @@ print(vhegen_instance.expansions)
 ~~~~
 
 ## Expansion output
+
+TBC
 
 ## Fitting of expansion coefficients
 
