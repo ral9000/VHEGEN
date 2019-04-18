@@ -113,11 +113,6 @@ print(vhegen_instance.expansions)
 
 The final expansions may be viewed by printing attribute `expansions`. Alternatively they may also be checked by executing method `pdflatex(path)` to produce a compiled output `.pdf` file similarly in procedural usage. If `path` is left unspecified, the output `.pdf` will be sent to the `outputs` subdirectory as it is in procedural usage.
 
-# Thank you
-
-Thank you for your interest in VHEGEN! If the VHEGEN package was used in research resulting in a publication, please reference the article in Computer Physics Communications which describes the program. For questions, bugs, comments, or inquiries for contribution, please contact robert.lang@mail.utoronto.ca. 
-
-
 # Authors
 
 * Robert A. Lang (University of Toronto)
