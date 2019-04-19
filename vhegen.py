@@ -1,5 +1,6 @@
 from __future__ import print_function
-print('Loading modules',end='\r')
+if __name__ == '__main__':
+    print('Loading modules',end='\r')
 import modules.glbls as glo
 import modules.input as inp
 import modules.electronic as el

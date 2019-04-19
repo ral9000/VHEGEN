@@ -600,7 +600,7 @@ def apply_constraints(local_constraints, p, fitted_term,unfitted_term): #returns
                         sat_constraints += 1
     return sat_constraints == len(local_constraints)
 
-##constraint functions
+#Constraint functions
 def even(i,p):
     if p[i] % 2 != 0:
         return False
@@ -752,6 +752,5 @@ constraint_funcs = {'even':even,
                     'nm_postproc': nm_postproc,
                     'na':na,
                     'nr':nr}
-
 
 #EOF
