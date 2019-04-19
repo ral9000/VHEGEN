@@ -38,13 +38,7 @@ class VHEGEN:
 
     def return_init(self):
         #returns formatted input; for logging
-        return ('---------------------------------------'
-                '\n  VHEGEN instance parameters:'
-                '\n  Symmetry: ' + self.symmetry+
-                '\n  Problem: ' + inp.format_problem(self.states,self.modes)+
-                '\n  Expansion orders: ' + str(self.orders)+
-                '\n  Output filename: ' + self.filename+
-                '\n---------------------------------------')
+        return inp.return_problem(self.symmetry,self.states,self.modes,self.orders,self.filename)
 
     def get_eigenvals(self):
         #acquires independent matrix elements and their eigenvalues

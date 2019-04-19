@@ -23,7 +23,7 @@ requirements_dct = {0:[1,['A','A']],
                     19:[0.5*(-1+1j*sym.sqrt(3)),['E','A']],
                     20:[0.5*(-1+1j*sym.sqrt(3)),['E','E']]}
 
-def return_formula(n):
+def return_formula(n,k):
     formula_dct = {0:[Term(1,Coeff('ar',['I1','bI2']),[Mono('z','_alpha','I1'),Mono('z','_bTerma','bI2')]),
                       Term(1j,Coeff('ai',['I3','bI4']),[Mono('z','_alpha','I3'),Mono('z','_bTerma','bI4')])],
 
@@ -107,5 +107,5 @@ def return_formula(n):
                        Term(-1,Coeff('bi',['2K1','2K2','m1',n+'n-1']),[Mono('rho','_alpha','Abs(m1)+2K1'),Mono('rho','_bTerma','Abs('+n+'n-1-m1)+2K2'),Sin(['m1',n+'n-1-m1'])]),
                        Term(1j,Coeff('br',['2K1','2K2','m1',n+'n-1']),[Mono('rho','_alpha','Abs(m1)+2K1'),Mono('rho','_bTerma','Abs('+n+'n-1-m1)+2K2'),Sin(['m1',n+'n-1-m1'])]),
                        Term(1j,Coeff('bi',['2K1','2K2','m1',n+'n-1']),[Mono('rho','_alpha','Abs(m1)+2K1'),Mono('rho','_bTerma','Abs('+n+'n-1-m1)+2K2'),Cos(['m1',n+'n-1-m1'])])]}
-    return formula_dct
+    return formula_dct[k]
 #EOF

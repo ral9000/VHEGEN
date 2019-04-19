@@ -71,7 +71,7 @@ Herein we describe important methods and attributes of the VHEGEN class, made ac
 
 ## Initialization
 
-To initialize an instance of the VHEGEN class, a dictionary containing all vibronic problem parameters for the instance must be specified as its only argument. The input may be prepared by the `prepare_input` function from the `input` module, which takes the five parameters: point group symmetry, the electronic state(s), the vibrational mode(s), order(s) of expansion, and an optional filename -- all given as strings following the syntax rules for procedural input. E.g.) initializing an instance of VHEGEN for the (E+A)x(e+a) problem in C4 symmetry at 12th order is shown below.
+To initialize an instance of the VHEGEN class, a dictionary containing all vibronic problem parameters for the instance must be specified as its only argument. The input may be prepared by `inp.prepare_input`, which takes the five parameters: point group symmetry, the electronic state(s), the vibrational mode(s), order(s) of expansion, and an optional filename -- all given as strings following the syntax rules for procedural input. E.g.) initializing an instance of VHEGEN for the (E+A)x(e+a) problem in C4 symmetry at 12th order is shown below.
 ~~~~
 import vhegen as vhe
 

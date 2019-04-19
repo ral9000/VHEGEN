@@ -165,6 +165,15 @@ def reorder(inp_list):
             inp_list = list(reversed(inp_list))
     return inp_list
     
+def return_problem(symmetry,states,modes,orders,filename):
+    return  ('\n---------------------------------------'
+             '\n  VHEGEN instance parameters:'
+             '\n  Symmetry: ' + symmetry+
+             '\n  Problem: ' + format_problem(states,modes)+
+             '\n  Expansion orders: ' + str(orders)+
+             '\n  Output filename: ' + filename+
+             '\n---------------------------------------')
+
 def dynamic_input():
     #symmetry
     dyn_inp = input('Enter symmetry: ')
@@ -237,7 +246,15 @@ def dynamic_input():
             filename = filename_inp
             print('Filename: "'+filename+'".')
             break
-    return symmetry, states, modes, orders, filename
+
+    print(return_problem(symmetry,states,modes,orders,filename))
+
+    while True:
+        yn_prompt = input('Continue? [Y/N]: ')
+        if yn_prompt.upper() == 'Y':
+            return symmetry, states, modes, orders, filename
+        elif yn_prompt.upper() == 'N' or yn_prompt.upper() == 'EXIT':
+            exit()
 
 def read_input():
     argparser = configure_parser()

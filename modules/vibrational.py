@@ -378,7 +378,7 @@ def get_root_formula(eigenvals,modes,n_arg):
         reqs = [rotational_eigenval,searchmodes]
     for k in requirements_dct:
         if requirements_dct[k] == reqs:
-            formula = return_formula(n)[k]
+            formula = return_formula(n,k)
             if requires_signswap == True:
                 for term in formula:
                     if isinstance(term,ET):
