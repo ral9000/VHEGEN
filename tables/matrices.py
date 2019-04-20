@@ -1,14 +1,14 @@
 from sympy import Matrix, Symbol, conjugate, sqrt
 
 requirements_dct = {0: ['A','A'],
-							1: ['A','B'],
-							2: ['E','A'],
-							3: ['E','B'],
-							4: ['E','E'],
-							5: ['B','B'],
-							6: ['A'],
-							7: ['B'],
-							8: ['E']}
+					1: ['A','B'],
+					2: ['E','A'],
+					3: ['E','B'],
+					4: ['E','E'],
+					5: ['B','B'],
+					6: ['A'],
+					7: ['B'],
+					8: ['E']}
 
 #Structure of matrix_dct values: [original H ,symmetrized H, transformation U]
 matrix_dct = {0: [Matrix([[0,'A_alphaA_beta'],
@@ -100,6 +100,11 @@ matrix_dct = {0: [Matrix([[0,'A_alphaA_beta'],
 
 			  }
 
-
-
+def return_matrix(states):
+	requirements = [s[0] for s in states]
+	for k in requirements_dct:
+		if requirements_dct[k] == requirements:
+			return matrix_dct[k]
+	print('Error: Could not find matrix form for states '+str(states)+'.')
+	exit()
 
