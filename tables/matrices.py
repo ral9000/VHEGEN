@@ -1,4 +1,4 @@
-from sympy import Matrix, Symbol, conjugate
+from sympy import Matrix, Symbol, conjugate, sqrt
 
 requirements_dct = {0: ['A','A'],
 							1: ['A','B'],
@@ -10,84 +10,96 @@ requirements_dct = {0: ['A','A'],
 							7: ['B'],
 							8: ['E']}
 
-#Structure of values: [original H ,symmetrized H, transformation U]
-matrix_dct = {0: [],
+#Structure of matrix_dct values: [original H ,symmetrized H, transformation U]
+matrix_dct = {0: [Matrix([[0,'A_alphaA_beta'],
+						  ['A_betaA_alpha',0]]),
 
-			  1: [],
+				  Matrix([[0,'A_alphaA_beta'],
+				  		  ['A_alphaA_beta',0]]),
 
-			  2: [],
+				  Matrix([[1,0],
+				  		  [0,1]])],
 
-			  3: [],
+			  1: [Matrix([[0,'AB'],
+			  			  ['BA',0]]),
 
-			  4: [],
+			  	  Matrix([[0,'AB'],
+			  	  		  ['AB',0]]),
 
-			  5: [],
+			  	  Matrix([[1,0],
+			  	  		  [0,1]])],
 
-			  6: [],
+			  2: [Matrix([[0,0,'+A'],
+			  			  [0,0,'-A'],
+			  			  ['A+','A-',0]]),
 
-			  7: [],
+			  	  Matrix([[0,0,'+A'],
+			  			  [0,0,conjugate('+A')],
+			  			  [conjugate('+A'),'+A',0]]),
 
-			  8: []
+			  	  Matrix([[1,1,0],
+			  	  		  [1j,-1j,0],
+			  	  		  [0,0,sqrt(2)]])*1/sym.sqrt(2)],
 
-}
+			  3: [Matrix([[0,0,'+B'],
+			  			  [0,0,'-B'],
+			  			  ['B+','B-',0]]),
+
+			  	  Matrix([[0,0,'+B'],
+			  			  [0,0,conjugate('+B')],
+			  			  [conjugate('+B'),'+B',0]]),
+
+			  	  Matrix([[1,1,0],
+			  	  		  [1j,-1j,0],
+			  	  		  [0,0,sqrt(2)]])*1/sym.sqrt(2)],
+
+			  4: [Matrix([[0,0,'+_alpha+_beta','+_alpha-_beta'],
+                          [0,0,'-_alpha+_beta','-_alpha-_beta'],
+                          ['+_beta+_alpha','+_beta-_alpha',0,0],
+                          ['-_beta+_alpha','-_beta-_alpha',0,0]]),
+
+			  	  Matrix([[0,0,'+_alpha+_beta','+_alpha-_beta'],
+                          [0,0,conjugate('+_alpha-_beta'),conjugate('+_alpha+_beta')],
+                          [conjugate('+_alpha+_beta'),'+_alpha-_beta',0,0],
+                          [conjugate('+_alpha-_beta'),'+_alpha+_beta',0,0]]),
+
+			  	  Matrix([[1,1,0,0],
+			  	  		  [1j,-1j,0,0],
+			  	  		  [0,0,1,1],
+			  	  		  [0,0,1j,-1j]])*1/sym.sqrt(2)],
+
+			  5: [[Matrix([[0,'B_alphaB_beta'],
+						  ['B_betaB_alpha',0]]),
+
+				  Matrix([[0,'B_alphaB_beta'],
+				  		  ['B_alphaB_beta',0]]),
+
+				  Matrix([[1,0],
+				  		  [0,1]])]],
+
+			  6: [Matrix([['AA']]),
+
+			  	  Matrix([['AA']]),
+
+			  	  Matrix([[1]])],
+
+			  7: [Matrix([['BB']]),
+
+			  	  Matrix([['BB']]),
+
+			  	  Matrix([[1]])],
+
+			  8: [Matrix([['+,+', '+,-'],
+                          ['-,+', '-,-']]),
+
+			  	  Matrix([['++', '+-'],
+                          [conjugate('+-'), '++']]),
+
+			  	  Matrix([[1,1],
+			  	  		  [1j,-1j]])*1/sym.sqrt(2)]
+
+			  }
 
 
 
-if len(gammastates+Estates) == 1: #intraterm cases
-            if len(Estates) == 1: #E 
 
-                state_components = ['+','-']
-
-                self.orig = sym.Matrix([['+,+', '+,-'],
-                                        ['-,+', '-,-']])
-
-                self.symd = sym.Matrix([['+,+', '+,-'],
-                                        ['+,-*', '+,+']])
-
-                self.unitary = 1/sym.sqrt(2)*sym.Matrix([[1,1],[1j,-1j]])
-            elif len(gammastates) == 1: #gamma
-                state_components = [gammastates[0][0]]
-                self.orig = sym.Matrix([[sym.Symbol(gammastates[0][0]+gammastates[0][0])]])
-                self.symd = self.orig
-                self.unitary = sym.Matrix([[1]])
-
-        else: #interterm cases
-            if len(Estates) == 2: #E+E
-                state_components = ['+_alpha','-_alpha','+_beta','-_beta']
-                self.orig = sym.Matrix([[0,0,sym.Symbol('+_alpha.+_beta'),sym.Symbol('+_alpha.-_beta')],
-                                        [0,0,sym.Symbol('-_alpha.+_beta'),sym.Symbol('-_alpha.-_beta')],
-                                        [sym.Symbol('+_beta.+_alpha'),sym.Symbol('+_beta.-_alpha'),0,0],
-                                        [sym.Symbol('-_beta.+_alpha'),sym.Symbol('-_beta.-_alpha'),0,0]])
-                self.symd = sym.Matrix([[0,0,sym.Symbol('+_alpha.+_beta'),sym.Symbol('+_alpha.-_beta')],
-                                        [0,0,sym.conjugate(sym.Symbol('+_alpha.-_beta')),sym.conjugate(sym.Symbol('+_alpha.+_beta'))],
-                                        [sym.conjugate(sym.Symbol('+_alpha.+_beta')),sym.Symbol('+_alpha.-_beta'),0,0],
-                                        [sym.conjugate(sym.Symbol('+_alpha.-_beta')),sym.Symbol('+_alpha.+_beta'),0,0]])
-                self.unitary = 1/sym.sqrt(2)*sym.Matrix([[1,1,0,0],[1j,-1j,0,0],[0,0,1,1],[0,0,1j,-1j]])
-
-            elif len(Estates) == 1 and len(gammastates) == 1: #E+gamma
-                state_components = ['+','-',gammastates[0][0]]
-                self.orig = sym.Matrix([[0,0,sym.Symbol('+'+gammastates[0][0])],
-                                        [0,0,sym.Symbol('-'+gammastates[0][0])],
-                                        [sym.Symbol(gammastates[0][0]+'+'),sym.Symbol(gammastates[0][0]+'-'),0]])
-
-                self.symd = sym.Matrix([[0,0,sym.Symbol('+'+gammastates[0][0])],
-                                        [0,0,sym.conjugate(sym.Symbol('+'+gammastates[0][0]))],
-                                        [sym.conjugate(sym.Symbol('+'+gammastates[0][0])),sym.Symbol('+'+gammastates[0][0]),0]])
-                self.unitary = 1/sym.sqrt(2)*sym.Matrix([[1,1,0],[1j,-1j,0],[0,0,sym.sqrt(2)]])
-
-            elif len(gammastates) == 2: #gamma+gamma
-                if gammastates[0][0] == gammastates[1][0]: #need alpha/beta labelling
-                    state_components = [gammastates[0][0]+'_alpha',gammastates[1][0]+'_beta']
-                    self.orig = sym.Matrix([[0,sym.Symbol(gammastates[0][0]+'_alpha'+gammastates[1][0]+'_beta')],
-                                            [sym.Symbol(gammastates[1][0]+'_beta'+gammastates[0][0]+'_alpha'),0]])
-                    self.symd = sym.Matrix([[0,sym.Symbol(gammastates[0][0]+'_alpha'+gammastates[1][0]+'_beta')],
-                                            [sym.Symbol(gammastates[0][0]+'_alpha'+gammastates[1][0]+'_beta'),0]])
-                
-                else:
-                    state_components = [gammastates[0][0],gammastates[1][0]]
-                    self.orig = sym.Matrix([[0,sym.Symbol(gammastates[0][0]+gammastates[1][0])],
-                                            [sym.Symbol(gammastates[1][0]+gammastates[0][0]),0]])
-                    self.symd = sym.Matrix([[0,sym.Symbol(gammastates[0][0]+gammastates[1][0])],
-                                            [sym.Symbol(gammastates[0][0]+gammastates[1][0]),0]])
-                self.unitary = sym.Matrix([[1,0],[0,1]])
-                
