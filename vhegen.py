@@ -17,8 +17,8 @@ class VHEGEN:
         self.modes = problem_dct['modes']
         self.orders = problem_dct['o']
         self.filename = problem_dct['f']
-        self.e_coords = 'pol' #default coordinate system
-        self.basis = 'complex' #default E state basis
+        self.e_coords = 'both' #default e coordinate system
+        self.basis = 'both' #default E state basis
 
     def set_basis(self,basis):
         if 'E' in [i[0] for i in self.states]:

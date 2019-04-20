@@ -1,6 +1,5 @@
 import sympy as sym
 import sympy.physics.quantum
-import numpy as np 
 from copy import copy,deepcopy
 
 def kdelta(p,q):
@@ -25,67 +24,6 @@ def inver_parity(state):
     else:
         return 0
 
-def get_eigenvals(symmetry, states):
-    n = int(symmetry[1])
-    if len(states)==2:      
-        if n % 2 == 1: #odd case
-            #interterm cases
-            if ('A' in states[0] and 'A' in states[1]):
-                #A+A
-                eigenvals = {sym.Symbol('A_alphaA_beta'):[1,(-1)**(kdelta(refl_parity(states[0]),refl_parity(states[1]))+1),0,(-1)**(kdelta(inver_parity(states[0]),inver_parity(states[1]))+1)]} 
-            elif ('E' in states[0] and 'A' in states[1]):
-                #E+A
-                eigenvals = {sym.Symbol('+A'):[0.5*(-1+1j*sym.sqrt(3)),(-1)**kdelta(refl_parity(states[1]),2),(-1)**kdelta(refl_parity(states[1]),1),(-1)**(kdelta(inver_parity(states[0]),inver_parity(states[1]))+1)]} 
-            elif ('E' in states[0] and 'E' in states[1]):
-                #E+E
-                eigenvals = {sym.Symbol('+_alpha.+_beta'):[1,1,-1,(-1)**(kdelta(inver_parity(states[0]),inver_parity(states[1]))+1)],
-                             sym.Symbol('+_alpha.-_beta'):[0.5*(-1-1j*sym.sqrt(3)),1,-1,(-1)**(kdelta(inver_parity(states[0]),inver_parity(states[1]))+1)]} 
-        
-        elif n % 2 == 0: #even case
-            #interterm cases
-            if ('A' in states[0] and 'A' in states[1]):
-                #A+A
-                eigenvals = {sym.Symbol('A_alphaA_beta'):[1,(-1)**(kdelta(refl_parity(states[0]),refl_parity(states[1]))+1),0,(-1)**(kdelta(inver_parity(states[0]),inver_parity(states[1]))+1)]} 
-            elif ('B' in states[0] and 'B' in states[1]):
-                #B+B
-                eigenvals = {sym.Symbol('B_alphaB_beta'):[1,(-1)**(kdelta(refl_parity(states[0]),refl_parity(states[1]))+1),0,(-1)**(kdelta(inver_parity(states[0]),inver_parity(states[1]))+1)]}
-            elif ('A' in states[0] and 'B' in states[1]):
-                #A+B
-                eigenvals = {sym.Symbol('AB'):[-1,(-1)**(kdelta(refl_parity(states[0]),refl_parity(states[1]))+1),0,(-1)**(kdelta(inver_parity(states[0]),inver_parity(states[1]))+1)]} 
-            elif ('E' in states[0] and 'A' in states[1]):
-                #E+A
-                eigenvals = {sym.Symbol('+A'):[1j,(-1)**kdelta(refl_parity(states[1]),2),(-1)**kdelta(refl_parity(states[1]),1),(-1)**(kdelta(inver_parity(states[0]),inver_parity(states[1]))+1)]} 
-            elif ('E' in states[0] and 'B' in states[1]):
-                #E+B
-                eigenvals = {sym.Symbol('+B'):[-1j,(-1)**kdelta(refl_parity(states[1]),2),(-1)**kdelta(refl_parity(states[1]),1),(-1)**(kdelta(inver_parity(states[0]),inver_parity(states[1]))+1)]} 
-            elif ('E' in states[0] and 'E' in states[1]):
-                #E+E
-                eigenvals = {sym.Symbol('+_alpha.+_beta'):[1,1,-1,(-1)**(kdelta(inver_parity(states[0]),inver_parity(states[1]))+1)],
-                             sym.Symbol('+_alpha.-_beta'):[-1,1,-1,(-1)**(kdelta(inver_parity(states[0]),inver_parity(states[1]))+1)]} 
-    else:
-        if n % 2 == 1: #odd case
-            #intraterm cases 
-            if 'A' in states[0]:
-                #A
-                eigenvals = {sym.Symbol('AA'):[1,1,0,1]}
-            elif 'E' in states[0]:
-                #E
-                eigenvals = {sym.Symbol('++'): [1,1,0,1],
-                             sym.Symbol('+-'): [0.5*(-1-1j*sym.sqrt(3)),1,-1,1]}
-        elif n % 2 == 0: #even case 
-            #intraterm cases
-            if 'A' in states[0]:
-                #A
-                eigenvals = {sym.Symbol('AA'):[1,1,0,1]}
-            elif 'B' in states[0]:
-                #B
-                eigenvals = {sym.Symbol('BB'):[1,1,0,1]}
-            elif 'E' in states[0]:
-                #E
-                eigenvals = {sym.Symbol('++'): [1,1,0,1],
-                             sym.Symbol('+-'): [-1,1,-1,1]}
-    return eigenvals
-
 class VibronicMatrix:
     def __init__(self,states):
         gammastates = []
@@ -101,11 +39,15 @@ class VibronicMatrix:
 
         if len(gammastates+Estates) == 1: #intraterm cases
             if len(Estates) == 1: #E 
+
                 state_components = ['+','-']
-                self.orig = sym.Matrix([[sym.Symbol('++'),sym.Symbol('+-')],
-                                        [sym.Symbol('-+'),sym.Symbol('--')]])
-                self.symd = sym.Matrix([[sym.Symbol('++'),sym.Symbol('+-')],
-                                        [sym.conjugate(sym.Symbol('+-')),sym.Symbol('++')]])
+
+                self.orig = sym.Matrix([['+,+', '+,-'],
+                                        ['-,+', '-,-']])
+
+                self.symd = sym.Matrix([['+,+', '+,-'],
+                                        ['+,-*', '+,+']])
+
                 self.unitary = 1/sym.sqrt(2)*sym.Matrix([[1,1],[1j,-1j]])
             elif len(gammastates) == 1: #gamma
                 state_components = [gammastates[0][0]]
@@ -175,21 +117,6 @@ class VibronicMatrix:
                     self.dependencies[indep_e].append(sym.conjugate(self.orig[c]))
         return self.dependencies
 
-    def sub_expansions(self,expansions):
-        expanded_matrices = {}
-        for o in expansions:
-            expanded_matrices[o] = copy(self.orig)
-        for key in self.dependencies:
-            for m_e in self.dependencies[key]:
-                #non conj
-                if m_e in self.orig:
-                    expanded_matrices[o][self.orig.index(m_e)] = expansions[o][key]
-                #conj
-                elif sym.conjugate(m_e) in self.orig:
-                    expanded_matrices[o][self.orig.index(m_e)] = sym.conjugate(expansions[o][key])
-        self.expanded_matrices = expanded_matrices 
-        return self.expanded_matrices
-
     def format2TeX(self):
         texmatrix = deepcopy(self.orig)
         for c,i in enumerate(texmatrix):
@@ -253,7 +180,7 @@ def get_dependent_elements(expansion_dct,count,obj):
 
 def format_matrix_element(matrix_element):
     m_e = str(matrix_element)
-    m_e = m_e.replace('.','')
+    m_e = m_e.replace(',','')
     m_e = m_e.replace('alpha',R'{\alpha}')
     m_e = m_e.replace('beta',R'{\beta}')
     return sym.Symbol('H_{'+m_e+'}')

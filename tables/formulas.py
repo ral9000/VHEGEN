@@ -108,4 +108,5 @@ def return_formula(n,k):
                        Term(1j,Coeff('br',['2K1','2K2','m1',n+'n-1']),[Mono('rho','_alpha','Abs(m1)+2K1'),Mono('rho','_bTerma','Abs('+n+'n-1-m1)+2K2'),Sin(['m1',n+'n-1-m1'])]),
                        Term(1j,Coeff('bi',['2K1','2K2','m1',n+'n-1']),[Mono('rho','_alpha','Abs(m1)+2K1'),Mono('rho','_bTerma','Abs('+n+'n-1-m1)+2K2'),Cos(['m1',n+'n-1-m1'])])]}
     return formula_dct[k]
+
 #EOF

@@ -361,10 +361,9 @@ def requires_signswap(rotational_eigenval):
     else:
         return False    
 
-from formulas.formula_table import requirements_dct, return_formula
+from tables.formulas import requirements_dct, return_formula
 
 def get_root_formula(eigenvals,modes,n_arg):
-    #this function is analogous to looking up Tables 2,3,4 in Hickman et al (2018)
     n = str(n_arg)
     rotational_eigenval = eigenvals[0]
     refl_Im = eigenvals[2]
@@ -394,8 +393,7 @@ def get_root_formula(eigenvals,modes,n_arg):
                             max_c -= 1
                     c += 1
             return(formula)
-    raise Exception('VHEGENError: Could not find root formula for '
-                    'rotational eigenvalue '+str(rotational_eigenval)+' and modes '+str(modes)+'.')
+    raise Exception('VHEGENError: Could not find root formula for rotational eigenvalue '+str(rotational_eigenval)+' and modes '+str(modes)+'.')
 
 def gen_index_lists(indices,order,eigenvals):
     val_list = []

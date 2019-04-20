@@ -78,7 +78,7 @@ def states_arg(arg,sym):
         if e in glo.irrep_dct[sym]:
             met_cond += 1
     if met_cond == max_cond:
-        return states
+        return reorder(states)
     else:
         raise Exception('InputError: State(s) '+arg+' not valid irreps in '+str(sym)+'.')
 
@@ -106,8 +106,7 @@ def modes_arg(arg,sym):
         if e in glo.irrep_dct[sym]:
             met_cond += 1
     if met_cond == max_cond:
-        modes = reorder(modes)
-        return modes
+        return reorder(modes)
     else:
         raise Exception('InputError: Modes(s) '+modes.lower()+' not valid irreps in '+symmetry+'.')
 
@@ -270,16 +269,14 @@ def read_input():
             print('StaticInputError: Invalid symmetry argument.')
             exit()
         try:
-            states = states_arg(options.states,symmetry)
-            states = reorder(states)
+            states = reorder(states_arg(options.states,symmetry))
             if symmetry in glo.trigonal_groups:
                 states = states #limit_trigonal(states)
         except Exception as e:
             print('StaticInputError: Invalid states argument.')
             exit()
         try:
-            modes = modes_arg(options.modes,symmetry)
-            modes = reorder(modes)
+            modes = reorder(modes_arg(options.modes,symmetry))
             if symmetry in glo.trigonal_groups:
                 modes = modes #limit_trigonal(modes)
         except Exception as e:
