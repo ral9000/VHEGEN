@@ -2,7 +2,9 @@ trigonal_groups = ('C3','C3V','C3H','D3','D3H','D3D')
 
 tetragonal_groups = ('C4','S4','C4V','C4H','D4','D4H','D2D')
 
-all_groups = trigonal_groups+tetragonal_groups
+cubic_groups = ()
+
+all_groups = trigonal_groups+tetragonal_groups+cubic_groups
 
 irrep_dct = {'C3':("E","A"),
              'C3V':("A1","A2","E"),
@@ -19,4 +21,14 @@ irrep_dct = {'C3':("E","A"),
              'D2D':("A1","A2","B1","B2","E")}
 
 irrep_priority = ['E','A','B']
+
+state_components_dct = {'A':['A'],
+                        'B':['B'],
+                        'E':['+','-'],
+                        'T':['X','Y','Z']}
+
+def replace_all(string, dct):
+    for k in dct:
+        string = string.replace(k,dct[k])
+    return string
 #EOF

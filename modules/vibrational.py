@@ -1,6 +1,7 @@
 import sympy as sym
 import itertools
 import os
+from modules.glbls import replace_all
 from modules.input import reorder
 from copy import copy,deepcopy
 
@@ -477,25 +478,26 @@ def get_constraint(eigenvals, vib_modes, operation):
         #Open refl.sym file
         for arg in constraintargs:
             if sym.simplify(princ_rot-arg) == 0:
-                with open(str(arg).replace('*','X').replace(' ','')+"_"+operation+".sym","r") as sym_file:
+                with open(replace_all(str(arg),{'*':'X',' ':''})+"_"+operation+".sym","r") as sym_file:
                     constraint_lines  = sym_file.readlines()
             elif sym.simplify(sym.re(princ_rot)-sym.im(princ_rot)*1j - arg) == 0:
-                with open(str(arg).replace('*','X').replace(' ','')+"_"+operation+".sym","r") as sym_file:
+                with open(replace_all(str(arg),{'*':'X',' ':''})+"_"+operation+".sym","r") as sym_file:
                     constraint_lines  = sym_file.readlines()
         os.chdir('..')
     except OSError as e:
         print(e)
+        
     vib_modes = [i.replace("''",'"') for i in vib_modes]
+
     if operation == 'refl':
         eigen_req = '[' + str(refl_Re) + ',' + str(refl_Im) + ']'
+        vib_modes = [replace_all(i,{'G':'','U':'',"'":'','"':''}) for i in vib_modes]
+
     elif operation == 'inver' or operation == 'hrefl':
         eigen_req = '[' + str(inver_eigenval) + ']'
-    if operation == 'refl':
-        vib_modes = [i.replace('G','').replace('U','') for i in vib_modes]
-        vib_modes = [i.replace("'",'').replace('"','') for i in vib_modes]
-    elif operation == 'inver' or operation == 'hrefl':
-        vib_modes = [i.replace('1','').replace('2','') for i in vib_modes]
-    if len(vib_modes) == 1:
+        vib_modes = [replace_all(i,{'1':'','2':''}) for i in vib_modes]
+
+    if len(vib_modes) == 1:        
         if operation == 'refl':
             vib_modes.append('A1')
         elif operation == 'inver':

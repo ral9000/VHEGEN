@@ -41,10 +41,6 @@ class VHEGEN:
         #returns formatted input; for logging
         return inp.return_problem(self.symmetry,self.states,self.modes,self.orders,self.filename)
 
-    def get_eigenvals(self):
-        #acquires independent matrix elements and their eigenvalues
-        self.eigenvals = el.get_eigenvals(self.symmetry, self.states)
-
     def return_eigenvals(self):
         #returns formatted eigenvals; for logging
         string='Independent matrix elements: Eigenvals\n\n'
@@ -76,8 +72,9 @@ class VHEGEN:
     def return_constraints(self):
         return out.format_constraints(self.constraints)
 
-    def get_matrix_form(self):
-        self.matrix = el.VibronicMatrix(self.states)
+    def init_matrix_form(self):
+        self.matrix = el.VibronicMatrix(self.symmetry,self.states)
+        self.eigenvals = self.matrix.symmetry_eigenvals
         self.matrix.get_dependencies()
 
     def get_expansions(self):
@@ -94,8 +91,7 @@ class VHEGEN:
                 #for e_coords='both', get_matrix_element_expansions returns normal structure but list of expansions for each matrix element, 1st being pol, 2nd cart.
                 expansions[o][e],parameters[o][e] = vi.get_matrix_element_expansion(self.__formulas[e],o,self.constraints[e],self.e_coords,self.eigenvals[e])
                 count[o][e] = len(parameters[o][e])
-        if hasattr(self,'matrix'):
-            expansions = el.get_dependent_elements(expansions,count,self) #map dependent matrix elements
+        expansions = el.get_dependent_elements(expansions,count,self) #map dependent matrix elements
 
         self.expansions = expansions
         self.parameters = parameters
@@ -161,8 +157,7 @@ class VHEGEN:
             return map_string
 
     def auto(self):
-        self.get_eigenvals()
-        self.get_matrix_form()
+        self.init_matrix_form()
         self.get_formulas()
         self.get_expansions()
         self.basis_transformation()
@@ -214,9 +209,9 @@ class VHEGEN:
                 else:
                     for e in self.expansions_real[o]:
                         TeX_expansions_real += '\n'+R'\begin{dmath*}'+'\n'+self.convert(el.format_matrix_element(e),'LaTeX')+'^{('+str(o)+')}='+self.convert(self.expansions_real[o][e][0],'LaTeX')+R'\\'+'\n'+R'\end{dmath*}' +'\n'
-            TeX_content = out.compose_TeX_both_bases(self.symmetry,self.matrix.format2TeX(),self.matrix_real.format2TeX(),TeX_problem,TeX_expansions,TeX_expansions_real)
+            TeX_content = out.compose_TeX_both_bases(self.symmetry,self.matrix.format_TeX_mat(),self.matrix_real.format_TeX_mat(),TeX_problem,TeX_expansions,TeX_expansions_real)
         else:
-            TeX_content = out.compose_TeX(self.symmetry,self.matrix.format2TeX(),TeX_problem,TeX_expansions)
+            TeX_content = out.compose_TeX(self.symmetry,self.matrix.format_TeX_mat(),TeX_problem,TeX_expansions)
         out.TeX_write(self.filename,path,TeX_content)
         out.exec_pdflatex(self.filename,path)
 
@@ -227,8 +222,7 @@ def main():
     t1 = time()
     vhegen.set_e_coordinates(config[u'e_coords'])
     vhegen.set_basis(config[u'basis'])
-    vhegen.get_eigenvals()
-    vhegen.get_matrix_form()
+    vhegen.init_matrix_form()
     out.log_append(vhegen.return_eigenvals())
     vhegen.get_formulas()
     out.log_append(vhegen.return_formulas())

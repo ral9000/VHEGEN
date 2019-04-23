@@ -1,5 +1,6 @@
-import sympy as sym
-import sympy.physics.quantum
+from sympy import Matrix, Symbol, Add, Mul, UnevaluatedExpr, conjugate, re, im, printing, simplify, sqrt
+from sympy.physics.quantum import Ket, Bra
+from modules.glbls import state_components_dct, replace_all
 from copy import copy,deepcopy
 
 def kdelta(p,q):
@@ -24,141 +25,92 @@ def inver_parity(state):
     else:
         return 0
 
+def get_state_components(states):
+    state_types = [s[0] for s in states]
+    state_components = []
+    for s in state_types:
+        state_components += state_components_dct[s]
+    return state_components
+            
 class VibronicMatrix:
-    def __init__(self,states):
-        gammastates = []
-        Estates = []
-        state_components = []
-        for s in states:
-            if 'E' in s:
-                Estates.append(s)
-                state_components + ['+','-']
-            else:
-                gammastates.append(s)
-                state_components + []
+    def __init__(self,symmetry,states):
 
-        if len(gammastates+Estates) == 1: #intraterm cases
-            if len(Estates) == 1: #E 
+        from tables.matrices import requirements_dct, matrix_dct, return_matrices
+        from tables.eigenvalues import return_eigenvals
 
-                state_components = ['+','-']
+        self.original_mat, self.symmetrized_mat, self.transform_mat = return_matrices(states)
+        self.symmetry_eigenvals = return_eigenvals(symmetry,states) #Matrix element symmetry eigenvalues
+        self.state_components = get_state_components(states) #Matrix ket-bra basis representation
 
-                self.orig = sym.Matrix([['+,+', '+,-'],
-                                        ['-,+', '-,-']])
+        self.get_matrix_product_form()
 
-                self.symd = sym.Matrix([['+,+', '+,-'],
-                                        ['+,-*', '+,+']])
-
-                self.unitary = 1/sym.sqrt(2)*sym.Matrix([[1,1],[1j,-1j]])
-            elif len(gammastates) == 1: #gamma
-                state_components = [gammastates[0][0]]
-                self.orig = sym.Matrix([[sym.Symbol(gammastates[0][0]+gammastates[0][0])]])
-                self.symd = self.orig
-                self.unitary = sym.Matrix([[1]])
-
-        else: #interterm cases
-            if len(Estates) == 2: #E+E
-                state_components = ['+_alpha','-_alpha','+_beta','-_beta']
-                self.orig = sym.Matrix([[0,0,sym.Symbol('+_alpha.+_beta'),sym.Symbol('+_alpha.-_beta')],
-                                        [0,0,sym.Symbol('-_alpha.+_beta'),sym.Symbol('-_alpha.-_beta')],
-                                        [sym.Symbol('+_beta.+_alpha'),sym.Symbol('+_beta.-_alpha'),0,0],
-                                        [sym.Symbol('-_beta.+_alpha'),sym.Symbol('-_beta.-_alpha'),0,0]])
-                self.symd = sym.Matrix([[0,0,sym.Symbol('+_alpha.+_beta'),sym.Symbol('+_alpha.-_beta')],
-                                        [0,0,sym.conjugate(sym.Symbol('+_alpha.-_beta')),sym.conjugate(sym.Symbol('+_alpha.+_beta'))],
-                                        [sym.conjugate(sym.Symbol('+_alpha.+_beta')),sym.Symbol('+_alpha.-_beta'),0,0],
-                                        [sym.conjugate(sym.Symbol('+_alpha.-_beta')),sym.Symbol('+_alpha.+_beta'),0,0]])
-                self.unitary = 1/sym.sqrt(2)*sym.Matrix([[1,1,0,0],[1j,-1j,0,0],[0,0,1,1],[0,0,1j,-1j]])
-
-            elif len(Estates) == 1 and len(gammastates) == 1: #E+gamma
-                state_components = ['+','-',gammastates[0][0]]
-                self.orig = sym.Matrix([[0,0,sym.Symbol('+'+gammastates[0][0])],
-                                        [0,0,sym.Symbol('-'+gammastates[0][0])],
-                                        [sym.Symbol(gammastates[0][0]+'+'),sym.Symbol(gammastates[0][0]+'-'),0]])
-
-                self.symd = sym.Matrix([[0,0,sym.Symbol('+'+gammastates[0][0])],
-                                        [0,0,sym.conjugate(sym.Symbol('+'+gammastates[0][0]))],
-                                        [sym.conjugate(sym.Symbol('+'+gammastates[0][0])),sym.Symbol('+'+gammastates[0][0]),0]])
-                self.unitary = 1/sym.sqrt(2)*sym.Matrix([[1,1,0],[1j,-1j,0],[0,0,sym.sqrt(2)]])
-
-            elif len(gammastates) == 2: #gamma+gamma
-                if gammastates[0][0] == gammastates[1][0]: #need alpha/beta labelling
-                    state_components = [gammastates[0][0]+'_alpha',gammastates[1][0]+'_beta']
-                    self.orig = sym.Matrix([[0,sym.Symbol(gammastates[0][0]+'_alpha'+gammastates[1][0]+'_beta')],
-                                            [sym.Symbol(gammastates[1][0]+'_beta'+gammastates[0][0]+'_alpha'),0]])
-                    self.symd = sym.Matrix([[0,sym.Symbol(gammastates[0][0]+'_alpha'+gammastates[1][0]+'_beta')],
-                                            [sym.Symbol(gammastates[0][0]+'_alpha'+gammastates[1][0]+'_beta'),0]])
-                
-                else:
-                    state_components = [gammastates[0][0],gammastates[1][0]]
-                    self.orig = sym.Matrix([[0,sym.Symbol(gammastates[0][0]+gammastates[1][0])],
-                                            [sym.Symbol(gammastates[1][0]+gammastates[0][0]),0]])
-                    self.symd = sym.Matrix([[0,sym.Symbol(gammastates[0][0]+gammastates[1][0])],
-                                            [sym.Symbol(gammastates[0][0]+gammastates[1][0]),0]])
-                self.unitary = sym.Matrix([[1,0],[0,1]])
-                
-        self.bras = sym.Matrix([sym.physics.quantum.state.Bra(c) for c in state_components])
-        self.kets = sym.transpose(sym.Matrix([i.dual for i in self.bras]))
-        self.form = sym.UnevaluatedExpr(self.kets)*sym.UnevaluatedExpr(self.orig)*sym.UnevaluatedExpr(self.bras)
+    def get_matrix_product_form(self):
+        self.ket_row = Matrix([Ket(s) for s in self.state_components]).transpose()
+        self.bra_col = Matrix([Bra(s) for s in self.state_components])
+        self.form = UnevaluatedExpr(self.ket_row)*UnevaluatedExpr(self.symmetrized_mat)*UnevaluatedExpr(self.bra_col)
+        return self.form
 
     def __str__(self):
-        return str(self.orig)
+        return str(self.symmetrized_mat)
 
     def get_dependencies(self):
+
         independent_set = set()
-        for i in self.symd:
-            if not isinstance(i,sym.conjugate) and i != 0:
-                independent_set.add(i)
+        for m_e in self.symmetrized_mat:
+            if not isinstance(m_e,conjugate) and m_e != 0:
+                independent_set.add(m_e)
+
         self.dependencies = {}
         for indep_e in independent_set:
             self.dependencies[indep_e] = []
-            for c,e in enumerate(self.symd):
+            for c,e in enumerate(self.symmetrized_mat):
                 if e == indep_e:
-                    self.dependencies[indep_e].append(self.orig[c])
-                if sym.conjugate(e) == indep_e:
-                    self.dependencies[indep_e].append(sym.conjugate(self.orig[c]))
+                    self.dependencies[indep_e].append(self.original_mat[c])
+                if conjugate(e) == indep_e:
+                    self.dependencies[indep_e].append(conjugate(self.original_mat[c]))
+
         return self.dependencies
 
-    def format2TeX(self):
-        texmatrix = deepcopy(self.orig)
-        for c,i in enumerate(texmatrix):
-            if i != 0:
-                texmatrix[c] = format_matrix_element(i)
-            else:
-                texmatrix[c] = i
-        form = copy(self.form)
-        form = form.subs(self.orig,texmatrix)
-        return R'$\hat{H}='+sym.printing.latex(form,mat_delim='(',mat_str='matrix')+'$'
+    def format_TeX_mat(self):
+        tex_mat = deepcopy(self.symmetrized_mat)
 
-    def change_basis(self): #complex to real basis
-        for c,element in enumerate(self.symd):
-            if type(element) == sym.conjugate:
-                self.symd[c] = sym.re(sym.conjugate(element)) - 1j*sym.im(sym.conjugate(element))
+        for c,i in enumerate(tex_mat):
+            tex_mat[c] = format_matrix_element(i)
+
+        tex_form = UnevaluatedExpr(self.ket_row)*UnevaluatedExpr(tex_mat)*UnevaluatedExpr(self.bra_col)
+        return R'$\hat{H}='+printing.latex(tex_form,mat_delim='(',mat_str='matrix')+'$'
+
+    def format_TeX_dependencies(self): #{H+A: [H-A, HA+*]} etc
+        tex_dependencies = ''
+
+    def change_basis(self): #Complex to real matrix transformation
+
+        for c,e in enumerate(self.symmetrized_mat): #Expand all elements into real and imaginary parts
+            if type(e) == conjugate:
+                self.symmetrized_mat[c] = re(conjugate(e)) - 1j*im(conjugate(e))
             else:
-                self.symd[c] = sym.re(element) + 1j*sym.im(element)
-        evolved_matrix = (self.unitary*self.symd*sym.physics.quantum.Dagger(self.unitary))
-        for c, element in enumerate(evolved_matrix):
-            evolved_matrix[c] = sym.simplify(element)
-        self.evolved_matrix = evolved_matrix
-        #Change of labels:
-        new_matrix_form = copy(self.orig)
-        for c,e in enumerate(new_matrix_form):
-            if e != 0:
-                e_str = str(e)
-                e_str = e_str.replace('+','X').replace('-','Y')
-                new_matrix_form[c] = sym.Symbol(e_str)
-        for c,e in enumerate(self.bras):
-            e_str = str(e).replace('<','').replace('|','').replace('+','X').replace('-','Y')
-            self.bras = self.bras.subs(e,sym.physics.quantum.state.Bra(e_str))
-        for c,e in enumerate(self.kets):
-            e_str = str(e).replace('>','').replace('|','').replace('+','X').replace('-','Y')
-            self.kets = self.kets.subs(e,sym.physics.quantum.state.Ket(e_str))
-        self.orig = new_matrix_form
-        self.form = sym.UnevaluatedExpr(self.kets.subs({sym.Symbol('+'):sym.Symbol('X'),sym.Symbol('-'):sym.Symbol('Y')}))*sym.UnevaluatedExpr(new_matrix_form)*sym.UnevaluatedExpr(self.bras.subs({sym.Symbol('+'):sym.Symbol('X'),sym.Symbol('-'):sym.Symbol('Y')}))
+                self.symmetrized_mat[c] = re(e) + 1j*im(e)
+
+        evolved_mat = self.transform_mat*self.symmetrized_mat*(self.transform_mat.H)
+
+        #Update matrix product form:
+        self.state_components = state_components = ['X','Y']
+
+        for c,e in enumerate(copy(self.symmetrized_mat)):
+            evolved_mat[c] = simplify(evolved_mat[c]) #Simplify evolved mat element-wise
+            e = replace_all(str(e), {'+':'X','-':'Y'})
+            self.symmetrized_mat[c] = Symbol(e)
+
+        self.evolved_mat = evolved_mat
+        self.get_matrix_product_form()
+
+        #Element mapping
         mapping = {}
-        for c,e in enumerate(self.orig):
+        for c,e in enumerate(self.original_mat):
             if e != 0:
-                e_str = str(e)
-                e_str = e_str.replace('+','X').replace('-','Y')
-                mapping[sym.Symbol(e_str)] = self.evolved_matrix[c]
+                e_str = replace_all(str(e), {'+':'X','-':'Y'})
+                mapping[e_str] = self.evolved_mat[c]
+
         return mapping
         
 def get_dependent_elements(expansion_dct,count,obj):
@@ -170,42 +122,45 @@ def get_dependent_elements(expansion_dct,count,obj):
         dependent_count[o] = {}
         for e in expansion_dct[o]:
             for dep_e in obj.matrix.dependencies[e]:
-                if isinstance(dep_e,sym.conjugate):
-                    all_expansions_dct[o][sym.conjugate(dep_e)] = [sym.conjugate(expansion_dct[o][e][c]) for c,i in enumerate(expansion_dct[o][e])]
-                    dependent_count[o][sym.conjugate(dep_e)] = count[o][e]
+                if isinstance(dep_e,conjugate):
+                    all_expansions_dct[o][conjugate(dep_e)] = [conjugate(expansion_dct[o][e][c]) for c,i in enumerate(expansion_dct[o][e])]
+                    dependent_count[o][conjugate(dep_e)] = count[o][e]
                 else:
                     all_expansions_dct[o][dep_e] = expansion_dct[o][e]
                     dependent_count[o][dep_e] = count[o][e]
     return all_expansions_dct
 
-def format_matrix_element(matrix_element):
-    m_e = str(matrix_element)
-    m_e = m_e.replace(',','')
-    m_e = m_e.replace('alpha',R'{\alpha}')
-    m_e = m_e.replace('beta',R'{\beta}')
-    return sym.Symbol('H_{'+m_e+'}')
+def format_matrix_element(m_e):
+    if m_e != 0:
+        if isinstance(m_e,conjugate):
+            m_e_str = replace_all(str(conjugate(m_e)), {',':'', 'alpha':R'{\alpha}', 'beta':R'{\beta}'})
+            return (Symbol(R'{H_{'+str(m_e_str)+R'}}^*'))
+        else:
+            m_e_str = replace_all(str(m_e), {',':'', 'alpha':R'{\alpha}', 'beta':R'{\beta}'})
+            return Symbol(R'H_{'+m_e_str+R'}')
+    else: return 0
 
 def prune_dependent_elements(real_matrix_elements):
     indep_m_e = []
     m_e = [str(i) for i in real_matrix_elements]
-    #E+A: XA, YA, AX, AY --> XA, YA
+
     if 'XA' in m_e:
         for i in m_e:
             if i[0] == 'X' or i[0] == 'Y':
-                indep_m_e.append(sym.Symbol(i))
-    #E+E: all --> Xalpha Xbeta, Xalpha, Ybeta
+                indep_m_e.append(Symbol(i))
+
     elif '.' in m_e[0]:
         m_e_lists = []
         for i in m_e:
             m_e_lists.append(i.split('.'))
         for i in m_e_lists:
             if 'alpha' in i[0] and 'X' in i[0]:
-                indep_m_e.append(sym.Symbol('.'.join(i)))
-    #E: XX, XY, YX, YY --> XX, XY
+                indep_m_e.append(Symbol('.'.join(i)))
+
     elif 'XX' in m_e:
         for i in m_e:
             if i[0] == 'X':
-                indep_m_e.append(sym.Symbol(i))
+                indep_m_e.append(Symbol(i))
     else:
         indep_m_e = real_matrix_elements
 
@@ -230,7 +185,7 @@ def map_elements(expansions, mapping):
                 get_inheritance = True
                 inheritance_count = {}
             expanded_terms = []
-            if type(mapping[k]) == sym.Add:
+            if type(mapping[k]) == Add:
                 k_args = list(mapping[k].args)
             else:
                 k_args = [mapping[k]]
@@ -245,12 +200,12 @@ def map_elements(expansions, mapping):
                         expanded_terms.append(substituted_args)
                         term_arguments = substituted_args[0]
 
-                        if type(term_arguments) == sym.Symbol:
+                        if type(term_arguments) == Symbol:
                             term_count = 1
-                        elif type(term_arguments) == sym.Mul: #handle numeric prefactor and single terms
+                        elif type(term_arguments) == Mul: #handle numeric prefactor and single terms
                             sum_exists = False
                             for part in term_arguments.args:
-                                if type(part) == sym.Add:
+                                if type(part) == Add:
                                     sum_exists = True
                                     term_count = len(part.args)
                             if sum_exists == False:
