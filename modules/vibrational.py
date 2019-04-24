@@ -387,7 +387,7 @@ def get_root_formula(eigenvals,modes,n_arg):
                 max_c = len(formula) - 1
                 c = 0
                 while c <= max_c:
-                    if isinstance(formula[c],ET):
+                    if isinstance(formula[c],Term):
                         if type(formula[c].prefactor) == complex:
                             del formula[c]
                             c -= 1

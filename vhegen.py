@@ -87,7 +87,7 @@ class VHEGEN:
             count[o] = {}
             parameters[o] = {}
             for e in self.eigenvals: #generate independent matrix elements
-                print('Expanding H_'+str(e))
+                print('Expanding H_{'+str(e).replace('__',',')+'}')
                 #for e_coords='both', get_matrix_element_expansions returns normal structure but list of expansions for each matrix element, 1st being pol, 2nd cart.
                 expansions[o][e],parameters[o][e] = vi.get_matrix_element_expansion(self.__formulas[e],o,self.constraints[e],self.e_coords,self.eigenvals[e])
                 count[o][e] = len(parameters[o][e])

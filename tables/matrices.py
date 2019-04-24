@@ -11,89 +11,89 @@ requirements_dct = {0: ['A','A'],
                     8: ['E']}
 
 #Structure of matrix_dct values: [original H ,symmetrized H, transformation U]
-matrix_dct = {0: [Matrix([[0,'A_alphaA_beta'],
-                          ['A_betaA_alpha',0]]),
+matrix_dct = {0: [Matrix([[0,'A_alpha__A_beta'],
+                          ['A_beta__A_alpha',0]]),
 
-                  Matrix([[0,'A_alphaA_beta'],
-                          ['A_alphaA_beta',0]]),
-
-                  Matrix([[1,0],
-                          [0,1]])],
-
-              1: [Matrix([[0,'AB'],
-                          ['BA',0]]),
-
-                  Matrix([[0,'AB'],
-                          ['AB',0]]),
+                  Matrix([[0,'A_alpha__A_beta'],
+                          ['A_alpha__A_beta',0]]),
 
                   Matrix([[1,0],
                           [0,1]])],
 
-              2: [Matrix([[0,0,Symbol('+A')],
-                          [0,0,Symbol('-A')],
-                          [Symbol('A+'),Symbol('A-'),0]]),
+              1: [Matrix([[0,'A__B'],
+                          ['B__A',0]]),
 
-                  Matrix([[0,0,Symbol('+A')],
-                          [0,0,conjugate(Symbol('+A'))],
-                          [conjugate(Symbol('+A')),Symbol('+A'),0]]),
+                  Matrix([[0,'A__B'],
+                          ['A__B',0]]),
+
+                  Matrix([[1,0],
+                          [0,1]])],
+
+              2: [Matrix([[0,0,Symbol('+__A')],
+                          [0,0,Symbol('-__A')],
+                          [Symbol('A__+'),Symbol('A__-'),0]]),
+
+                  Matrix([[0,0,Symbol('+__A')],
+                          [0,0,conjugate(Symbol('+__A'))],
+                          [conjugate(Symbol('+__A')),Symbol('+__A'),0]]),
 
                   Matrix([[1,1,0],
                           [1j,-1j,0],
                           [0,0,sqrt(2)]])*1/sqrt(2)],
 
-              3: [Matrix([[0,0,Symbol('+B')],
-                          [0,0,Symbol('-B')],
-                          [Symbol('B+'),Symbol('B-'),0]]),
+              3: [Matrix([[0,0,Symbol('+__B')],
+                          [0,0,Symbol('-__B')],
+                          [Symbol('B__+'),Symbol('B__-'),0]]),
 
-                  Matrix([[0,0,Symbol('+B')],
-                          [0,0,conjugate(Symbol('+B'))],
-                          [conjugate(Symbol('+B')),Symbol('+B'),0]]),
+                  Matrix([[0,0,Symbol('+__B')],
+                          [0,0,conjugate(Symbol('+__B'))],
+                          [conjugate(Symbol('+__B')),Symbol('+__B'),0]]),
 
                   Matrix([[1,1,0],
                           [1j,-1j,0],
                           [0,0,sqrt(2)]])*1/sqrt(2)],
 
-              4: [Matrix([[0,0,Symbol('+_alpha.+_beta'),Symbol('+_alpha.-_beta')],
-                          [0,0,Symbol('-_alpha.+_beta'),Symbol('-_alpha.-_beta')],
-                          [Symbol('+_beta.+_alpha'),Symbol('+_beta.-_alpha'),0,0],
-                          [Symbol('-_beta.+_alpha'),Symbol('-_beta.-_alpha'),0,0]]),
+              4: [Matrix([[0,0,Symbol('+_alpha__+_beta'),Symbol('+_alpha__-_beta')],
+                          [0,0,Symbol('-_alpha__+_beta'),Symbol('-_alpha__-_beta')],
+                          [Symbol('+_beta__+_alpha'),Symbol('+_beta__-_alpha'),0,0],
+                          [Symbol('-_beta__+_alpha'),Symbol('-_beta__-_alpha'),0,0]]),
 
-                  Matrix([[0,0,Symbol('+_alpha.+_beta'),Symbol('+_alpha.-_beta')],
-                          [0,0,conjugate(Symbol('+_alpha.-_beta')),conjugate(Symbol('+_alpha.+_beta'))],
-                          [conjugate(Symbol('+_alpha.+_beta')),Symbol('+_alpha.-_beta'),0,0],
-                          [conjugate(Symbol('+_alpha.-_beta')),Symbol('+_alpha.+_beta'),0,0]]),
+                  Matrix([[0,0,Symbol('+_alpha__+_beta'),Symbol('+_alpha__-_beta')],
+                          [0,0,conjugate(Symbol('+_alpha__-_beta')),conjugate(Symbol('+_alpha__+_beta'))],
+                          [conjugate(Symbol('+_alpha__+_beta')),Symbol('+_alpha__-_beta'),0,0],
+                          [conjugate(Symbol('+_alpha__-_beta')),Symbol('+_alpha__+_beta'),0,0]]),
 
                   Matrix([[1,1,0,0],
                           [1j,-1j,0,0],
                           [0,0,1,1],
                           [0,0,1j,-1j]])*1/sqrt(2)],
 
-              5: [[Matrix([[0,'B_alphaB_beta'],
-                          ['B_betaB_alpha',0]]),
+              5: [[Matrix([[0,'B_alpha__B_beta'],
+                          ['B_beta__B_alpha',0]]),
 
-                  Matrix([[0,'B_alphaB_beta'],
-                          ['B_alphaB_beta',0]]),
+                  Matrix([[0,'B_alpha__B_beta'],
+                          ['B_alpha__B_beta',0]]),
 
                   Matrix([[1,0],
                           [0,1]])]],
 
-              6: [Matrix([['AA']]),
+              6: [Matrix([['A__A']]),
 
-                  Matrix([['AA']]),
-
-                  Matrix([[1]])],
-
-              7: [Matrix([['BB']]),
-
-                  Matrix([['BB']]),
+                  Matrix([['A__A']]),
 
                   Matrix([[1]])],
 
-              8: [Matrix([[Symbol('++'), Symbol('+-')],
-                          [Symbol('-+'), Symbol('--')]]),
+              7: [Matrix([['B__B']]),
 
-                  Matrix([[Symbol('++'), Symbol('+-')],
-                          [conjugate(Symbol('+-')), Symbol('++')]]),
+                  Matrix([['B__B']]),
+
+                  Matrix([[1]])],
+
+              8: [Matrix([[Symbol('+__+'), Symbol('+__-')],
+                          [Symbol('-__+'), Symbol('-__-')]]),
+
+                  Matrix([[Symbol('+__+'), Symbol('+__-')],
+                          [conjugate(Symbol('+__-')), Symbol('+__+')]]),
 
                   Matrix([[1,1],
                           [1j,-1j]])*1/sqrt(2)]

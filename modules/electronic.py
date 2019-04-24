@@ -1,4 +1,4 @@
-from sympy import Matrix, Symbol, Add, Mul, UnevaluatedExpr, conjugate, re, im, printing, simplify, sqrt
+from sympy import Matrix, Symbol, Add, Mul, UnevaluatedExpr, conjugate, re, im, printing, simplify, sqrt, sympify
 from sympy.physics.quantum import Ket, Bra
 from modules.glbls import state_components_dct, replace_all
 from copy import copy,deepcopy
@@ -26,10 +26,23 @@ def inver_parity(state):
         return 0
 
 def get_state_components(states):
+
+    label_dct = {0: R'_\alpha',
+                 1: R'_\beta'}
+
+    labelling = False
     state_types = [s[0] for s in states]
+    if len(state_types) == 2:
+        if state_types[0] == state_types[1]: #Gamma + Gamma 
+            labelling = True
+
     state_components = []
-    for s in state_types:
-        state_components += state_components_dct[s]
+    for c,s in enumerate(state_types):
+        if labelling == True:
+            state_components += [s_i+label_dct[c] for s_i in state_components_dct[s]]
+        else:
+            state_components += state_components_dct[s]
+    
     return state_components
             
 class VibronicMatrix:
@@ -41,7 +54,7 @@ class VibronicMatrix:
         self.original_mat, self.symmetrized_mat, self.transform_mat = return_matrices(states)
         self.symmetry_eigenvals = return_eigenvals(symmetry,states) #Matrix element symmetry eigenvalues
         self.state_components = get_state_components(states) #Matrix ket-bra basis representation
-
+        self.basis = 'complex'
         self.get_matrix_product_form()
 
     def get_matrix_product_form(self):
@@ -69,37 +82,61 @@ class VibronicMatrix:
                 if conjugate(e) == indep_e:
                     self.dependencies[indep_e].append(conjugate(self.original_mat[c]))
 
+        print('dependencies:')
+        print(self.dependencies)
+
         return self.dependencies
 
+    def format_TeX_dependencies(self):
+        dependencies = '$'
+        for k in self.dependencies:
+
+            dependencies += printing.latex(format_matrix_element(k))
+            for k_i in self.dependencies[k]:
+                dependencies += '='+ printing.latex(format_matrix_element(k_i)) 
+            dependencies += R'\\'
+        dependencies += '$'
+        return dependencies
+
     def format_TeX_mat(self):
-        tex_mat = deepcopy(self.symmetrized_mat)
+
+        tex_mat = deepcopy(self.original_mat)
 
         for c,i in enumerate(tex_mat):
             tex_mat[c] = format_matrix_element(i)
 
         tex_form = UnevaluatedExpr(self.ket_row)*UnevaluatedExpr(tex_mat)*UnevaluatedExpr(self.bra_col)
-        return R'$\hat{H}='+printing.latex(tex_form,mat_delim='(',mat_str='matrix')+'$'
 
-    def format_TeX_dependencies(self): #{H+A: [H-A, HA+*]} etc
-        tex_dependencies = ''
+        tex_formatted_form = R'$\hat{H}='+printing.latex(tex_form,mat_delim='(',mat_str='matrix')+'$'
+
+        if self.basis == 'complex':
+            #format dependencies
+            tex_formatted_form += R'\\'+self.format_TeX_dependencies()
+            
+        return tex_formatted_form
 
     def change_basis(self): #Complex to real matrix transformation
 
-        for c,e in enumerate(self.symmetrized_mat): #Expand all elements into real and imaginary parts
-            if type(e) == conjugate:
-                self.symmetrized_mat[c] = re(conjugate(e)) - 1j*im(conjugate(e))
-            else:
-                self.symmetrized_mat[c] = re(e) + 1j*im(e)
+        self.basis = 'real'
 
-        evolved_mat = self.transform_mat*self.symmetrized_mat*(self.transform_mat.H)
+        symmetrized_mat_expanded = deepcopy(self.symmetrized_mat)
+        for c,e in enumerate(symmetrized_mat_expanded): #Expand all elements into real and imaginary parts
+            if type(e) == conjugate:
+                symmetrized_mat_expanded[c] = re(conjugate(e)) - 1j*im(conjugate(e))
+            else:
+                symmetrized_mat_expanded[c] = re(e) + 1j*im(e)
+
+        evolved_mat = self.transform_mat*symmetrized_mat_expanded*(self.transform_mat.H)
 
         #Update matrix product form:
-        self.state_components = state_components = ['X','Y']
+        for c in range(0,len(self.state_components)):
+            self.state_components[c] = replace_all(self.state_components[c], {'+':'X','-':'Y'})
 
-        for c,e in enumerate(copy(self.symmetrized_mat)):
+        for c,e in enumerate(self.original_mat):
             evolved_mat[c] = simplify(evolved_mat[c]) #Simplify evolved mat element-wise
-            e = replace_all(str(e), {'+':'X','-':'Y'})
-            self.symmetrized_mat[c] = Symbol(e)
+            if e != 0:
+                e = replace_all(str(e), {'+':'X','-':'Y'})
+                self.original_mat[c] = Symbol(e)
 
         self.evolved_mat = evolved_mat
         self.get_matrix_product_form()
@@ -109,7 +146,7 @@ class VibronicMatrix:
         for c,e in enumerate(self.original_mat):
             if e != 0:
                 e_str = replace_all(str(e), {'+':'X','-':'Y'})
-                mapping[e_str] = self.evolved_mat[c]
+                mapping[Symbol(e_str)] = self.evolved_mat[c]
 
         return mapping
         
@@ -133,7 +170,7 @@ def get_dependent_elements(expansion_dct,count,obj):
 def format_matrix_element(m_e):
     if m_e != 0:
         if isinstance(m_e,conjugate):
-            m_e_str = replace_all(str(conjugate(m_e)), {',':'', 'alpha':R'{\alpha}', 'beta':R'{\beta}'})
+            m_e_str = replace_all(str(conjugate(m_e)), {'.':'', 'alpha':R'{\alpha}', 'beta':R'{\beta}'})
             return (Symbol(R'{H_{'+str(m_e_str)+R'}}^*'))
         else:
             m_e_str = replace_all(str(m_e), {',':'', 'alpha':R'{\alpha}', 'beta':R'{\beta}'})
@@ -232,5 +269,5 @@ def map_elements(expansions, mapping):
             if get_inheritance == True:
                 term_inheritance[o][k] = inheritance_count
     return mapped_expansions, term_inheritance
-
+    
 #EOF

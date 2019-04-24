@@ -1,0 +1,433 @@
+\batchmode
+\documentclass[fleqn]{article}
+\usepackage{amsmath}
+\usepackage{breqn}
+\usepackage[margin=0.7in]{geometry}
+\setlength\mathindent{0pt}
+\title{VHEGEN: A vibronic Hamiltonian expansion generator for trigonal and tetragonal polyatomic systems}
+\author{Robert A. Lang \and Riley J. Hickman \and Tao Zeng}
+\date{}
+\begin{document}
+\maketitle
+Thank you for using \texttt{VHEGEN}, the \texttt{V}-ibronic \texttt{H}-amiltonian \texttt{E}-xpansion \texttt{GEN}-erator for trigonal and tetragonal polyatomic systems. This is a \texttt{VHEGEN} output file compiled by \texttt{pdflatex}. If the \texttt{VHEGEN} package was used in research resulting in a publication, please reference the article in \textit{Computer Physics Communications} which describes the program ([doi here]). Additional information regarding the matrix element expansion process, including the independent matrix element eigenvalues, their root formulas and constraints, and their transformation to the real basis (if applicable), can be found in the \texttt{log} output file. For questions, bugs, or comments, please contact robert.lang@mail.utoronto.ca.\\\\
+\tableofcontents
+\newpage
+\section{Vibronic interaction}
+$(E_{}+E_{}) \otimes (e_{}+e_{})$ in $C_{3}$
+\section{Vibronic Hamiltonian operator in the complex $E$ basis}
+$\hat{H}=\left(\begin{matrix}{\left|+_\alpha\right\rangle } & {\left|-_\alpha\right\rangle } & {\left|+_\beta\right\rangle } & {\left|-_\beta\right\rangle }\end{matrix}\right) \left(\begin{matrix}0 & 0 & H_{+_{\alpha}+_{\beta}} & H_{+_{\alpha}-_{\beta}}\\0 & 0 & H_{-_{\alpha}+_{\beta}} & H_{-_{\alpha}-_{\beta}}\\H_{+_{\beta}+_{\alpha}} & H_{+_{\beta}-_{\alpha}} & 0 & 0\\H_{-_{\beta}+_{\alpha}} & H_{-_{\beta}-_{\alpha}} & 0 & 0\end{matrix}\right) \left(\begin{matrix}{\left\langle +_\alpha\right|}\\{\left\langle -_\alpha\right|}\\{\left\langle +_\beta\right|}\\{\left\langle -_\beta\right|}\end{matrix}\right)$\\$H_{+_{\alpha}+_{\beta}}=H_{+_{\alpha}+_{\beta}}={H_{-_{\alpha}-_{\beta}}}^*={H_{+_{\beta}+_{\alpha}}}^*=H_{-_{\beta}-_{\alpha}}\\H_{+_{\alpha}-_{\beta}}=H_{+_{\alpha}-_{\beta}}={H_{-_{\alpha}+_{\beta}}}^*=H_{+_{\beta}-_{\alpha}}={H_{-_{\beta}+_{\alpha}}}^*\\$
+\section{Matrix element expansions in the complex $E$ basis}
+\subsection{Order: 0}
+Number of fitting parameters: $H_{+_{\alpha}+_{\beta}}$: $2$, $H_{+_{\alpha}-_{\beta}}$: $0$.
+\subsubsection*{Polar e-coordinates:}
+
+\begin{dmath*}
+H_{+_{\alpha}+_{\beta}}^{(0)}= i a^{i}_{0,0,0,0} + a^{r}_{0,0,0,0}\\
+\end{dmath*}
+
+\begin{dmath*}
+H_{-_{\alpha}-_{\beta}}^{(0)}=-  i a^{i}_{0,0,0,0} + a^{r}_{0,0,0,0}\\
+\end{dmath*}
+
+\begin{dmath*}
+H_{+_{\beta}+_{\alpha}}^{(0)}=-  i a^{i}_{0,0,0,0} + a^{r}_{0,0,0,0}\\
+\end{dmath*}
+
+\begin{dmath*}
+H_{-_{\beta}-_{\alpha}}^{(0)}= i a^{i}_{0,0,0,0} + a^{r}_{0,0,0,0}\\
+\end{dmath*}
+
+\begin{dmath*}
+H_{+_{\alpha}-_{\beta}}^{(0)}=0\\
+\end{dmath*}
+
+\begin{dmath*}
+H_{-_{\alpha}+_{\beta}}^{(0)}=0\\
+\end{dmath*}
+
+\begin{dmath*}
+H_{+_{\beta}-_{\alpha}}^{(0)}=0\\
+\end{dmath*}
+
+\begin{dmath*}
+H_{-_{\beta}+_{\alpha}}^{(0)}=0\\
+\end{dmath*}
+\subsubsection*{Cartesian e-coordinates:}
+
+\begin{dmath*}
+H_{+_{\alpha}+_{\beta}}^{(0)}= i a^{i}_{0,0,0,0} + a^{r}_{0,0,0,0}\\
+\end{dmath*}
+
+\begin{dmath*}
+H_{-_{\alpha}-_{\beta}}^{(0)}=-  i a^{i}_{0,0,0,0} + a^{r}_{0,0,0,0}\\
+\end{dmath*}
+
+\begin{dmath*}
+H_{+_{\beta}+_{\alpha}}^{(0)}=-  i a^{i}_{0,0,0,0} + a^{r}_{0,0,0,0}\\
+\end{dmath*}
+
+\begin{dmath*}
+H_{-_{\beta}-_{\alpha}}^{(0)}= i a^{i}_{0,0,0,0} + a^{r}_{0,0,0,0}\\
+\end{dmath*}
+
+\begin{dmath*}
+H_{+_{\alpha}-_{\beta}}^{(0)}=0\\
+\end{dmath*}
+
+\begin{dmath*}
+H_{-_{\alpha}+_{\beta}}^{(0)}=0\\
+\end{dmath*}
+
+\begin{dmath*}
+H_{+_{\beta}-_{\alpha}}^{(0)}=0\\
+\end{dmath*}
+
+\begin{dmath*}
+H_{-_{\beta}+_{\alpha}}^{(0)}=0\\
+\end{dmath*}
+\subsection{Order: 1}
+Number of fitting parameters: $H_{+_{\alpha}+_{\beta}}$: $0$, $H_{+_{\alpha}-_{\beta}}$: $4$.
+\subsubsection*{Polar e-coordinates:}
+
+\begin{dmath*}
+H_{+_{\alpha}+_{\beta}}^{(1)}=0\\
+\end{dmath*}
+
+\begin{dmath*}
+H_{-_{\alpha}-_{\beta}}^{(1)}=0\\
+\end{dmath*}
+
+\begin{dmath*}
+H_{+_{\beta}+_{\alpha}}^{(1)}=0\\
+\end{dmath*}
+
+\begin{dmath*}
+H_{-_{\beta}-_{\alpha}}^{(1)}=0\\
+\end{dmath*}
+
+\begin{dmath*}
+H_{+_{\alpha}-_{\beta}}^{(1)}=b^{i}_{0,0,-1,-1} \rho_{\alpha} \sin{\left (\phi_{\alpha} \right )} +  i b^{i}_{0,0,-1,-1} \rho_{\alpha} \cos{\left (\phi_{\alpha} \right )} + b^{i}_{0,0,0,-1} \rho_{\beta} \sin{\left (\phi_{\beta} \right )} +  i b^{i}_{0,0,0,-1} \rho_{\beta} \cos{\left (\phi_{\beta} \right )} -  i b^{r}_{0,0,-1,-1} \rho_{\alpha} \sin{\left (\phi_{\alpha} \right )} + b^{r}_{0,0,-1,-1} \rho_{\alpha} \cos{\left (\phi_{\alpha} \right )} -  i b^{r}_{0,0,0,-1} \rho_{\beta} \sin{\left (\phi_{\beta} \right )} + b^{r}_{0,0,0,-1} \rho_{\beta} \cos{\left (\phi_{\beta} \right )}\\
+\end{dmath*}
+
+\begin{dmath*}
+H_{-_{\alpha}+_{\beta}}^{(1)}=b^{i}_{0,0,-1,-1} \rho_{\alpha} \sin{\left (\phi_{\alpha} \right )} -  i b^{i}_{0,0,-1,-1} \rho_{\alpha} \cos{\left (\phi_{\alpha} \right )} + b^{i}_{0,0,0,-1} \rho_{\beta} \sin{\left (\phi_{\beta} \right )} -  i b^{i}_{0,0,0,-1} \rho_{\beta} \cos{\left (\phi_{\beta} \right )} +  i b^{r}_{0,0,-1,-1} \rho_{\alpha} \sin{\left (\phi_{\alpha} \right )} + b^{r}_{0,0,-1,-1} \rho_{\alpha} \cos{\left (\phi_{\alpha} \right )} +  i b^{r}_{0,0,0,-1} \rho_{\beta} \sin{\left (\phi_{\beta} \right )} + b^{r}_{0,0,0,-1} \rho_{\beta} \cos{\left (\phi_{\beta} \right )}\\
+\end{dmath*}
+
+\begin{dmath*}
+H_{+_{\beta}-_{\alpha}}^{(1)}=b^{i}_{0,0,-1,-1} \rho_{\alpha} \sin{\left (\phi_{\alpha} \right )} +  i b^{i}_{0,0,-1,-1} \rho_{\alpha} \cos{\left (\phi_{\alpha} \right )} + b^{i}_{0,0,0,-1} \rho_{\beta} \sin{\left (\phi_{\beta} \right )} +  i b^{i}_{0,0,0,-1} \rho_{\beta} \cos{\left (\phi_{\beta} \right )} -  i b^{r}_{0,0,-1,-1} \rho_{\alpha} \sin{\left (\phi_{\alpha} \right )} + b^{r}_{0,0,-1,-1} \rho_{\alpha} \cos{\left (\phi_{\alpha} \right )} -  i b^{r}_{0,0,0,-1} \rho_{\beta} \sin{\left (\phi_{\beta} \right )} + b^{r}_{0,0,0,-1} \rho_{\beta} \cos{\left (\phi_{\beta} \right )}\\
+\end{dmath*}
+
+\begin{dmath*}
+H_{-_{\beta}+_{\alpha}}^{(1)}=b^{i}_{0,0,-1,-1} \rho_{\alpha} \sin{\left (\phi_{\alpha} \right )} -  i b^{i}_{0,0,-1,-1} \rho_{\alpha} \cos{\left (\phi_{\alpha} \right )} + b^{i}_{0,0,0,-1} \rho_{\beta} \sin{\left (\phi_{\beta} \right )} -  i b^{i}_{0,0,0,-1} \rho_{\beta} \cos{\left (\phi_{\beta} \right )} +  i b^{r}_{0,0,-1,-1} \rho_{\alpha} \sin{\left (\phi_{\alpha} \right )} + b^{r}_{0,0,-1,-1} \rho_{\alpha} \cos{\left (\phi_{\alpha} \right )} +  i b^{r}_{0,0,0,-1} \rho_{\beta} \sin{\left (\phi_{\beta} \right )} + b^{r}_{0,0,0,-1} \rho_{\beta} \cos{\left (\phi_{\beta} \right )}\\
+\end{dmath*}
+\subsubsection*{Cartesian e-coordinates:}
+
+\begin{dmath*}
+H_{+_{\alpha}+_{\beta}}^{(1)}=0\\
+\end{dmath*}
+
+\begin{dmath*}
+H_{-_{\alpha}-_{\beta}}^{(1)}=0\\
+\end{dmath*}
+
+\begin{dmath*}
+H_{+_{\beta}+_{\alpha}}^{(1)}=0\\
+\end{dmath*}
+
+\begin{dmath*}
+H_{-_{\beta}-_{\alpha}}^{(1)}=0\\
+\end{dmath*}
+
+\begin{dmath*}
+H_{+_{\alpha}-_{\beta}}^{(1)}= i b^{i}_{0,0,-1,-1} x_{\alpha} + b^{i}_{0,0,-1,-1} y_{\alpha} +  i b^{i}_{0,0,0,-1} x_{\beta} + b^{i}_{0,0,0,-1} y_{\beta} + b^{r}_{0,0,-1,-1} x_{\alpha} -  i b^{r}_{0,0,-1,-1} y_{\alpha} + b^{r}_{0,0,0,-1} x_{\beta} -  i b^{r}_{0,0,0,-1} y_{\beta}\\
+\end{dmath*}
+
+\begin{dmath*}
+H_{-_{\alpha}+_{\beta}}^{(1)}=-  i b^{i}_{0,0,-1,-1} x_{\alpha} + b^{i}_{0,0,-1,-1} y_{\alpha} -  i b^{i}_{0,0,0,-1} x_{\beta} + b^{i}_{0,0,0,-1} y_{\beta} + b^{r}_{0,0,-1,-1} x_{\alpha} +  i b^{r}_{0,0,-1,-1} y_{\alpha} + b^{r}_{0,0,0,-1} x_{\beta} +  i b^{r}_{0,0,0,-1} y_{\beta}\\
+\end{dmath*}
+
+\begin{dmath*}
+H_{+_{\beta}-_{\alpha}}^{(1)}= i b^{i}_{0,0,-1,-1} x_{\alpha} + b^{i}_{0,0,-1,-1} y_{\alpha} +  i b^{i}_{0,0,0,-1} x_{\beta} + b^{i}_{0,0,0,-1} y_{\beta} + b^{r}_{0,0,-1,-1} x_{\alpha} -  i b^{r}_{0,0,-1,-1} y_{\alpha} + b^{r}_{0,0,0,-1} x_{\beta} -  i b^{r}_{0,0,0,-1} y_{\beta}\\
+\end{dmath*}
+
+\begin{dmath*}
+H_{-_{\beta}+_{\alpha}}^{(1)}=-  i b^{i}_{0,0,-1,-1} x_{\alpha} + b^{i}_{0,0,-1,-1} y_{\alpha} -  i b^{i}_{0,0,0,-1} x_{\beta} + b^{i}_{0,0,0,-1} y_{\beta} + b^{r}_{0,0,-1,-1} x_{\alpha} +  i b^{r}_{0,0,-1,-1} y_{\alpha} + b^{r}_{0,0,0,-1} x_{\beta} +  i b^{r}_{0,0,0,-1} y_{\beta}\\
+\end{dmath*}
+\subsection{Order: 2}
+Number of fitting parameters: $H_{+_{\alpha}+_{\beta}}$: $8$, $H_{+_{\alpha}-_{\beta}}$: $6$.
+\subsubsection*{Polar e-coordinates:}
+
+\begin{dmath*}
+H_{+_{\alpha}+_{\beta}}^{(2)}=a^{i}_{0,0,-1,0} \rho_{\alpha} \rho_{\beta} \sin{\left (\phi_{\alpha} - \phi_{\beta} \right )} +  i a^{i}_{0,0,-1,0} \rho_{\alpha} \rho_{\beta} \cos{\left (\phi_{\alpha} - \phi_{\beta} \right )} - a^{i}_{0,0,1,0} \rho_{\alpha} \rho_{\beta} \sin{\left (\phi_{\alpha} - \phi_{\beta} \right )} +  i a^{i}_{0,0,1,0} \rho_{\alpha} \rho_{\beta} \cos{\left (\phi_{\alpha} - \phi_{\beta} \right )} +  i a^{i}_{0,2,0,0} \rho_{\beta}^{2} +  i a^{i}_{2,0,0,0} \rho_{\alpha}^{2} -  i a^{r}_{0,0,-1,0} \rho_{\alpha} \rho_{\beta} \sin{\left (\phi_{\alpha} - \phi_{\beta} \right )} + a^{r}_{0,0,-1,0} \rho_{\alpha} \rho_{\beta} \cos{\left (\phi_{\alpha} - \phi_{\beta} \right )} +  i a^{r}_{0,0,1,0} \rho_{\alpha} \rho_{\beta} \sin{\left (\phi_{\alpha} - \phi_{\beta} \right )} + a^{r}_{0,0,1,0} \rho_{\alpha} \rho_{\beta} \cos{\left (\phi_{\alpha} - \phi_{\beta} \right )} + a^{r}_{0,2,0,0} \rho_{\beta}^{2} + a^{r}_{2,0,0,0} \rho_{\alpha}^{2}\\
+\end{dmath*}
+
+\begin{dmath*}
+H_{-_{\alpha}-_{\beta}}^{(2)}=a^{i}_{0,0,-1,0} \rho_{\alpha} \rho_{\beta} \sin{\left (\phi_{\alpha} - \phi_{\beta} \right )} -  i a^{i}_{0,0,-1,0} \rho_{\alpha} \rho_{\beta} \cos{\left (\phi_{\alpha} - \phi_{\beta} \right )} - a^{i}_{0,0,1,0} \rho_{\alpha} \rho_{\beta} \sin{\left (\phi_{\alpha} - \phi_{\beta} \right )} -  i a^{i}_{0,0,1,0} \rho_{\alpha} \rho_{\beta} \cos{\left (\phi_{\alpha} - \phi_{\beta} \right )} -  i a^{i}_{0,2,0,0} \rho_{\beta}^{2} -  i a^{i}_{2,0,0,0} \rho_{\alpha}^{2} +  i a^{r}_{0,0,-1,0} \rho_{\alpha} \rho_{\beta} \sin{\left (\phi_{\alpha} - \phi_{\beta} \right )} + a^{r}_{0,0,-1,0} \rho_{\alpha} \rho_{\beta} \cos{\left (\phi_{\alpha} - \phi_{\beta} \right )} -  i a^{r}_{0,0,1,0} \rho_{\alpha} \rho_{\beta} \sin{\left (\phi_{\alpha} - \phi_{\beta} \right )} + a^{r}_{0,0,1,0} \rho_{\alpha} \rho_{\beta} \cos{\left (\phi_{\alpha} - \phi_{\beta} \right )} + a^{r}_{0,2,0,0} \rho_{\beta}^{2} + a^{r}_{2,0,0,0} \rho_{\alpha}^{2}\\
+\end{dmath*}
+
+\begin{dmath*}
+H_{+_{\beta}+_{\alpha}}^{(2)}=a^{i}_{0,0,-1,0} \rho_{\alpha} \rho_{\beta} \sin{\left (\phi_{\alpha} - \phi_{\beta} \right )} -  i a^{i}_{0,0,-1,0} \rho_{\alpha} \rho_{\beta} \cos{\left (\phi_{\alpha} - \phi_{\beta} \right )} - a^{i}_{0,0,1,0} \rho_{\alpha} \rho_{\beta} \sin{\left (\phi_{\alpha} - \phi_{\beta} \right )} -  i a^{i}_{0,0,1,0} \rho_{\alpha} \rho_{\beta} \cos{\left (\phi_{\alpha} - \phi_{\beta} \right )} -  i a^{i}_{0,2,0,0} \rho_{\beta}^{2} -  i a^{i}_{2,0,0,0} \rho_{\alpha}^{2} +  i a^{r}_{0,0,-1,0} \rho_{\alpha} \rho_{\beta} \sin{\left (\phi_{\alpha} - \phi_{\beta} \right )} + a^{r}_{0,0,-1,0} \rho_{\alpha} \rho_{\beta} \cos{\left (\phi_{\alpha} - \phi_{\beta} \right )} -  i a^{r}_{0,0,1,0} \rho_{\alpha} \rho_{\beta} \sin{\left (\phi_{\alpha} - \phi_{\beta} \right )} + a^{r}_{0,0,1,0} \rho_{\alpha} \rho_{\beta} \cos{\left (\phi_{\alpha} - \phi_{\beta} \right )} + a^{r}_{0,2,0,0} \rho_{\beta}^{2} + a^{r}_{2,0,0,0} \rho_{\alpha}^{2}\\
+\end{dmath*}
+
+\begin{dmath*}
+H_{-_{\beta}-_{\alpha}}^{(2)}=a^{i}_{0,0,-1,0} \rho_{\alpha} \rho_{\beta} \sin{\left (\phi_{\alpha} - \phi_{\beta} \right )} +  i a^{i}_{0,0,-1,0} \rho_{\alpha} \rho_{\beta} \cos{\left (\phi_{\alpha} - \phi_{\beta} \right )} - a^{i}_{0,0,1,0} \rho_{\alpha} \rho_{\beta} \sin{\left (\phi_{\alpha} - \phi_{\beta} \right )} +  i a^{i}_{0,0,1,0} \rho_{\alpha} \rho_{\beta} \cos{\left (\phi_{\alpha} - \phi_{\beta} \right )} +  i a^{i}_{0,2,0,0} \rho_{\beta}^{2} +  i a^{i}_{2,0,0,0} \rho_{\alpha}^{2} -  i a^{r}_{0,0,-1,0} \rho_{\alpha} \rho_{\beta} \sin{\left (\phi_{\alpha} - \phi_{\beta} \right )} + a^{r}_{0,0,-1,0} \rho_{\alpha} \rho_{\beta} \cos{\left (\phi_{\alpha} - \phi_{\beta} \right )} +  i a^{r}_{0,0,1,0} \rho_{\alpha} \rho_{\beta} \sin{\left (\phi_{\alpha} - \phi_{\beta} \right )} + a^{r}_{0,0,1,0} \rho_{\alpha} \rho_{\beta} \cos{\left (\phi_{\alpha} - \phi_{\beta} \right )} + a^{r}_{0,2,0,0} \rho_{\beta}^{2} + a^{r}_{2,0,0,0} \rho_{\alpha}^{2}\\
+\end{dmath*}
+
+\begin{dmath*}
+H_{+_{\alpha}-_{\beta}}^{(2)}=- b^{i}_{0,0,0,2} \rho_{\beta}^{2} \sin{\left (2 \phi_{\beta} \right )} +  i b^{i}_{0,0,0,2} \rho_{\beta}^{2} \cos{\left (2 \phi_{\beta} \right )} - b^{i}_{0,0,1,2} \rho_{\alpha} \rho_{\beta} \sin{\left (\phi_{\alpha} + \phi_{\beta} \right )} +  i b^{i}_{0,0,1,2} \rho_{\alpha} \rho_{\beta} \cos{\left (\phi_{\alpha} + \phi_{\beta} \right )} - b^{i}_{0,0,2,2} \rho_{\alpha}^{2} \sin{\left (2 \phi_{\alpha} \right )} +  i b^{i}_{0,0,2,2} \rho_{\alpha}^{2} \cos{\left (2 \phi_{\alpha} \right )} +  i b^{r}_{0,0,0,2} \rho_{\beta}^{2} \sin{\left (2 \phi_{\beta} \right )} + b^{r}_{0,0,0,2} \rho_{\beta}^{2} \cos{\left (2 \phi_{\beta} \right )} +  i b^{r}_{0,0,1,2} \rho_{\alpha} \rho_{\beta} \sin{\left (\phi_{\alpha} + \phi_{\beta} \right )} + b^{r}_{0,0,1,2} \rho_{\alpha} \rho_{\beta} \cos{\left (\phi_{\alpha} + \phi_{\beta} \right )} +  i b^{r}_{0,0,2,2} \rho_{\alpha}^{2} \sin{\left (2 \phi_{\alpha} \right )} + b^{r}_{0,0,2,2} \rho_{\alpha}^{2} \cos{\left (2 \phi_{\alpha} \right )}\\
+\end{dmath*}
+
+\begin{dmath*}
+H_{-_{\alpha}+_{\beta}}^{(2)}=- b^{i}_{0,0,0,2} \rho_{\beta}^{2} \sin{\left (2 \phi_{\beta} \right )} -  i b^{i}_{0,0,0,2} \rho_{\beta}^{2} \cos{\left (2 \phi_{\beta} \right )} - b^{i}_{0,0,1,2} \rho_{\alpha} \rho_{\beta} \sin{\left (\phi_{\alpha} + \phi_{\beta} \right )} -  i b^{i}_{0,0,1,2} \rho_{\alpha} \rho_{\beta} \cos{\left (\phi_{\alpha} + \phi_{\beta} \right )} - b^{i}_{0,0,2,2} \rho_{\alpha}^{2} \sin{\left (2 \phi_{\alpha} \right )} -  i b^{i}_{0,0,2,2} \rho_{\alpha}^{2} \cos{\left (2 \phi_{\alpha} \right )} -  i b^{r}_{0,0,0,2} \rho_{\beta}^{2} \sin{\left (2 \phi_{\beta} \right )} + b^{r}_{0,0,0,2} \rho_{\beta}^{2} \cos{\left (2 \phi_{\beta} \right )} -  i b^{r}_{0,0,1,2} \rho_{\alpha} \rho_{\beta} \sin{\left (\phi_{\alpha} + \phi_{\beta} \right )} + b^{r}_{0,0,1,2} \rho_{\alpha} \rho_{\beta} \cos{\left (\phi_{\alpha} + \phi_{\beta} \right )} -  i b^{r}_{0,0,2,2} \rho_{\alpha}^{2} \sin{\left (2 \phi_{\alpha} \right )} + b^{r}_{0,0,2,2} \rho_{\alpha}^{2} \cos{\left (2 \phi_{\alpha} \right )}\\
+\end{dmath*}
+
+\begin{dmath*}
+H_{+_{\beta}-_{\alpha}}^{(2)}=- b^{i}_{0,0,0,2} \rho_{\beta}^{2} \sin{\left (2 \phi_{\beta} \right )} +  i b^{i}_{0,0,0,2} \rho_{\beta}^{2} \cos{\left (2 \phi_{\beta} \right )} - b^{i}_{0,0,1,2} \rho_{\alpha} \rho_{\beta} \sin{\left (\phi_{\alpha} + \phi_{\beta} \right )} +  i b^{i}_{0,0,1,2} \rho_{\alpha} \rho_{\beta} \cos{\left (\phi_{\alpha} + \phi_{\beta} \right )} - b^{i}_{0,0,2,2} \rho_{\alpha}^{2} \sin{\left (2 \phi_{\alpha} \right )} +  i b^{i}_{0,0,2,2} \rho_{\alpha}^{2} \cos{\left (2 \phi_{\alpha} \right )} +  i b^{r}_{0,0,0,2} \rho_{\beta}^{2} \sin{\left (2 \phi_{\beta} \right )} + b^{r}_{0,0,0,2} \rho_{\beta}^{2} \cos{\left (2 \phi_{\beta} \right )} +  i b^{r}_{0,0,1,2} \rho_{\alpha} \rho_{\beta} \sin{\left (\phi_{\alpha} + \phi_{\beta} \right )} + b^{r}_{0,0,1,2} \rho_{\alpha} \rho_{\beta} \cos{\left (\phi_{\alpha} + \phi_{\beta} \right )} +  i b^{r}_{0,0,2,2} \rho_{\alpha}^{2} \sin{\left (2 \phi_{\alpha} \right )} + b^{r}_{0,0,2,2} \rho_{\alpha}^{2} \cos{\left (2 \phi_{\alpha} \right )}\\
+\end{dmath*}
+
+\begin{dmath*}
+H_{-_{\beta}+_{\alpha}}^{(2)}=- b^{i}_{0,0,0,2} \rho_{\beta}^{2} \sin{\left (2 \phi_{\beta} \right )} -  i b^{i}_{0,0,0,2} \rho_{\beta}^{2} \cos{\left (2 \phi_{\beta} \right )} - b^{i}_{0,0,1,2} \rho_{\alpha} \rho_{\beta} \sin{\left (\phi_{\alpha} + \phi_{\beta} \right )} -  i b^{i}_{0,0,1,2} \rho_{\alpha} \rho_{\beta} \cos{\left (\phi_{\alpha} + \phi_{\beta} \right )} - b^{i}_{0,0,2,2} \rho_{\alpha}^{2} \sin{\left (2 \phi_{\alpha} \right )} -  i b^{i}_{0,0,2,2} \rho_{\alpha}^{2} \cos{\left (2 \phi_{\alpha} \right )} -  i b^{r}_{0,0,0,2} \rho_{\beta}^{2} \sin{\left (2 \phi_{\beta} \right )} + b^{r}_{0,0,0,2} \rho_{\beta}^{2} \cos{\left (2 \phi_{\beta} \right )} -  i b^{r}_{0,0,1,2} \rho_{\alpha} \rho_{\beta} \sin{\left (\phi_{\alpha} + \phi_{\beta} \right )} + b^{r}_{0,0,1,2} \rho_{\alpha} \rho_{\beta} \cos{\left (\phi_{\alpha} + \phi_{\beta} \right )} -  i b^{r}_{0,0,2,2} \rho_{\alpha}^{2} \sin{\left (2 \phi_{\alpha} \right )} + b^{r}_{0,0,2,2} \rho_{\alpha}^{2} \cos{\left (2 \phi_{\alpha} \right )}\\
+\end{dmath*}
+\subsubsection*{Cartesian e-coordinates:}
+
+\begin{dmath*}
+H_{+_{\alpha}+_{\beta}}^{(2)}= i a^{i}_{0,0,-1,0} \left(x_{\alpha} x_{\beta} + y_{\alpha} y_{\beta}\right) - a^{i}_{0,0,-1,0} \left(x_{\alpha} y_{\beta} - x_{\beta} y_{\alpha}\right) +  i a^{i}_{0,0,1,0} \left(x_{\alpha} x_{\beta} + y_{\alpha} y_{\beta}\right) + a^{i}_{0,0,1,0} \left(x_{\alpha} y_{\beta} - x_{\beta} y_{\alpha}\right) +  i a^{i}_{0,2,0,0} \left(x_{\beta}^{2} + y_{\beta}^{2}\right) +  i a^{i}_{2,0,0,0} \left(x_{\alpha}^{2} + y_{\alpha}^{2}\right) + a^{r}_{0,0,-1,0} \left(x_{\alpha} x_{\beta} + y_{\alpha} y_{\beta}\right) +  i a^{r}_{0,0,-1,0} \left(x_{\alpha} y_{\beta} - x_{\beta} y_{\alpha}\right) + a^{r}_{0,0,1,0} \left(x_{\alpha} x_{\beta} + y_{\alpha} y_{\beta}\right) -  i a^{r}_{0,0,1,0} \left(x_{\alpha} y_{\beta} - x_{\beta} y_{\alpha}\right) + a^{r}_{0,2,0,0} \left(x_{\beta}^{2} + y_{\beta}^{2}\right) + a^{r}_{2,0,0,0} \left(x_{\alpha}^{2} + y_{\alpha}^{2}\right)\\
+\end{dmath*}
+
+\begin{dmath*}
+H_{-_{\alpha}-_{\beta}}^{(2)}=-  i a^{i}_{0,0,-1,0} \left(x_{\alpha} x_{\beta} + y_{\alpha} y_{\beta}\right) - a^{i}_{0,0,-1,0} \left(x_{\alpha} y_{\beta} - x_{\beta} y_{\alpha}\right) -  i a^{i}_{0,0,1,0} \left(x_{\alpha} x_{\beta} + y_{\alpha} y_{\beta}\right) + a^{i}_{0,0,1,0} \left(x_{\alpha} y_{\beta} - x_{\beta} y_{\alpha}\right) -  i a^{i}_{0,2,0,0} \left(x_{\beta}^{2} + y_{\beta}^{2}\right) -  i a^{i}_{2,0,0,0} \left(x_{\alpha}^{2} + y_{\alpha}^{2}\right) + a^{r}_{0,0,-1,0} \left(x_{\alpha} x_{\beta} + y_{\alpha} y_{\beta}\right) -  i a^{r}_{0,0,-1,0} \left(x_{\alpha} y_{\beta} - x_{\beta} y_{\alpha}\right) + a^{r}_{0,0,1,0} \left(x_{\alpha} x_{\beta} + y_{\alpha} y_{\beta}\right) +  i a^{r}_{0,0,1,0} \left(x_{\alpha} y_{\beta} - x_{\beta} y_{\alpha}\right) + a^{r}_{0,2,0,0} \left(x_{\beta}^{2} + y_{\beta}^{2}\right) + a^{r}_{2,0,0,0} \left(x_{\alpha}^{2} + y_{\alpha}^{2}\right)\\
+\end{dmath*}
+
+\begin{dmath*}
+H_{+_{\beta}+_{\alpha}}^{(2)}=-  i a^{i}_{0,0,-1,0} \left(x_{\alpha} x_{\beta} + y_{\alpha} y_{\beta}\right) - a^{i}_{0,0,-1,0} \left(x_{\alpha} y_{\beta} - x_{\beta} y_{\alpha}\right) -  i a^{i}_{0,0,1,0} \left(x_{\alpha} x_{\beta} + y_{\alpha} y_{\beta}\right) + a^{i}_{0,0,1,0} \left(x_{\alpha} y_{\beta} - x_{\beta} y_{\alpha}\right) -  i a^{i}_{0,2,0,0} \left(x_{\beta}^{2} + y_{\beta}^{2}\right) -  i a^{i}_{2,0,0,0} \left(x_{\alpha}^{2} + y_{\alpha}^{2}\right) + a^{r}_{0,0,-1,0} \left(x_{\alpha} x_{\beta} + y_{\alpha} y_{\beta}\right) -  i a^{r}_{0,0,-1,0} \left(x_{\alpha} y_{\beta} - x_{\beta} y_{\alpha}\right) + a^{r}_{0,0,1,0} \left(x_{\alpha} x_{\beta} + y_{\alpha} y_{\beta}\right) +  i a^{r}_{0,0,1,0} \left(x_{\alpha} y_{\beta} - x_{\beta} y_{\alpha}\right) + a^{r}_{0,2,0,0} \left(x_{\beta}^{2} + y_{\beta}^{2}\right) + a^{r}_{2,0,0,0} \left(x_{\alpha}^{2} + y_{\alpha}^{2}\right)\\
+\end{dmath*}
+
+\begin{dmath*}
+H_{-_{\beta}-_{\alpha}}^{(2)}= i a^{i}_{0,0,-1,0} \left(x_{\alpha} x_{\beta} + y_{\alpha} y_{\beta}\right) - a^{i}_{0,0,-1,0} \left(x_{\alpha} y_{\beta} - x_{\beta} y_{\alpha}\right) +  i a^{i}_{0,0,1,0} \left(x_{\alpha} x_{\beta} + y_{\alpha} y_{\beta}\right) + a^{i}_{0,0,1,0} \left(x_{\alpha} y_{\beta} - x_{\beta} y_{\alpha}\right) +  i a^{i}_{0,2,0,0} \left(x_{\beta}^{2} + y_{\beta}^{2}\right) +  i a^{i}_{2,0,0,0} \left(x_{\alpha}^{2} + y_{\alpha}^{2}\right) + a^{r}_{0,0,-1,0} \left(x_{\alpha} x_{\beta} + y_{\alpha} y_{\beta}\right) +  i a^{r}_{0,0,-1,0} \left(x_{\alpha} y_{\beta} - x_{\beta} y_{\alpha}\right) + a^{r}_{0,0,1,0} \left(x_{\alpha} x_{\beta} + y_{\alpha} y_{\beta}\right) -  i a^{r}_{0,0,1,0} \left(x_{\alpha} y_{\beta} - x_{\beta} y_{\alpha}\right) + a^{r}_{0,2,0,0} \left(x_{\beta}^{2} + y_{\beta}^{2}\right) + a^{r}_{2,0,0,0} \left(x_{\alpha}^{2} + y_{\alpha}^{2}\right)\\
+\end{dmath*}
+
+\begin{dmath*}
+H_{+_{\alpha}-_{\beta}}^{(2)}=- 2 b^{i}_{0,0,0,2} x_{\beta} y_{\beta} +  i b^{i}_{0,0,0,2} \left(x_{\beta} - y_{\beta}\right) \left(x_{\beta} + y_{\beta}\right) +  i b^{i}_{0,0,1,2} \left(x_{\alpha} x_{\beta} - y_{\alpha} y_{\beta}\right) - b^{i}_{0,0,1,2} \left(x_{\alpha} y_{\beta} + x_{\beta} y_{\alpha}\right) - 2 b^{i}_{0,0,2,2} x_{\alpha} y_{\alpha} +  i b^{i}_{0,0,2,2} \left(x_{\alpha} - y_{\alpha}\right) \left(x_{\alpha} + y_{\alpha}\right) + 2 i b^{r}_{0,0,0,2} x_{\beta} y_{\beta} + b^{r}_{0,0,0,2} \left(x_{\beta} - y_{\beta}\right) \left(x_{\beta} + y_{\beta}\right) + b^{r}_{0,0,1,2} \left(x_{\alpha} x_{\beta} - y_{\alpha} y_{\beta}\right) +  i b^{r}_{0,0,1,2} \left(x_{\alpha} y_{\beta} + x_{\beta} y_{\alpha}\right) + 2 i b^{r}_{0,0,2,2} x_{\alpha} y_{\alpha} + b^{r}_{0,0,2,2} \left(x_{\alpha} - y_{\alpha}\right) \left(x_{\alpha} + y_{\alpha}\right)\\
+\end{dmath*}
+
+\begin{dmath*}
+H_{-_{\alpha}+_{\beta}}^{(2)}=- 2 b^{i}_{0,0,0,2} x_{\beta} y_{\beta} -  i b^{i}_{0,0,0,2} \left(x_{\beta} - y_{\beta}\right) \left(x_{\beta} + y_{\beta}\right) -  i b^{i}_{0,0,1,2} \left(x_{\alpha} x_{\beta} - y_{\alpha} y_{\beta}\right) - b^{i}_{0,0,1,2} \left(x_{\alpha} y_{\beta} + x_{\beta} y_{\alpha}\right) - 2 b^{i}_{0,0,2,2} x_{\alpha} y_{\alpha} -  i b^{i}_{0,0,2,2} \left(x_{\alpha} - y_{\alpha}\right) \left(x_{\alpha} + y_{\alpha}\right) - 2 i b^{r}_{0,0,0,2} x_{\beta} y_{\beta} + b^{r}_{0,0,0,2} \left(x_{\beta} - y_{\beta}\right) \left(x_{\beta} + y_{\beta}\right) + b^{r}_{0,0,1,2} \left(x_{\alpha} x_{\beta} - y_{\alpha} y_{\beta}\right) -  i b^{r}_{0,0,1,2} \left(x_{\alpha} y_{\beta} + x_{\beta} y_{\alpha}\right) - 2 i b^{r}_{0,0,2,2} x_{\alpha} y_{\alpha} + b^{r}_{0,0,2,2} \left(x_{\alpha} - y_{\alpha}\right) \left(x_{\alpha} + y_{\alpha}\right)\\
+\end{dmath*}
+
+\begin{dmath*}
+H_{+_{\beta}-_{\alpha}}^{(2)}=- 2 b^{i}_{0,0,0,2} x_{\beta} y_{\beta} +  i b^{i}_{0,0,0,2} \left(x_{\beta} - y_{\beta}\right) \left(x_{\beta} + y_{\beta}\right) +  i b^{i}_{0,0,1,2} \left(x_{\alpha} x_{\beta} - y_{\alpha} y_{\beta}\right) - b^{i}_{0,0,1,2} \left(x_{\alpha} y_{\beta} + x_{\beta} y_{\alpha}\right) - 2 b^{i}_{0,0,2,2} x_{\alpha} y_{\alpha} +  i b^{i}_{0,0,2,2} \left(x_{\alpha} - y_{\alpha}\right) \left(x_{\alpha} + y_{\alpha}\right) + 2 i b^{r}_{0,0,0,2} x_{\beta} y_{\beta} + b^{r}_{0,0,0,2} \left(x_{\beta} - y_{\beta}\right) \left(x_{\beta} + y_{\beta}\right) + b^{r}_{0,0,1,2} \left(x_{\alpha} x_{\beta} - y_{\alpha} y_{\beta}\right) +  i b^{r}_{0,0,1,2} \left(x_{\alpha} y_{\beta} + x_{\beta} y_{\alpha}\right) + 2 i b^{r}_{0,0,2,2} x_{\alpha} y_{\alpha} + b^{r}_{0,0,2,2} \left(x_{\alpha} - y_{\alpha}\right) \left(x_{\alpha} + y_{\alpha}\right)\\
+\end{dmath*}
+
+\begin{dmath*}
+H_{-_{\beta}+_{\alpha}}^{(2)}=- 2 b^{i}_{0,0,0,2} x_{\beta} y_{\beta} -  i b^{i}_{0,0,0,2} \left(x_{\beta} - y_{\beta}\right) \left(x_{\beta} + y_{\beta}\right) -  i b^{i}_{0,0,1,2} \left(x_{\alpha} x_{\beta} - y_{\alpha} y_{\beta}\right) - b^{i}_{0,0,1,2} \left(x_{\alpha} y_{\beta} + x_{\beta} y_{\alpha}\right) - 2 b^{i}_{0,0,2,2} x_{\alpha} y_{\alpha} -  i b^{i}_{0,0,2,2} \left(x_{\alpha} - y_{\alpha}\right) \left(x_{\alpha} + y_{\alpha}\right) - 2 i b^{r}_{0,0,0,2} x_{\beta} y_{\beta} + b^{r}_{0,0,0,2} \left(x_{\beta} - y_{\beta}\right) \left(x_{\beta} + y_{\beta}\right) + b^{r}_{0,0,1,2} \left(x_{\alpha} x_{\beta} - y_{\alpha} y_{\beta}\right) -  i b^{r}_{0,0,1,2} \left(x_{\alpha} y_{\beta} + x_{\beta} y_{\alpha}\right) - 2 i b^{r}_{0,0,2,2} x_{\alpha} y_{\alpha} + b^{r}_{0,0,2,2} \left(x_{\alpha} - y_{\alpha}\right) \left(x_{\alpha} + y_{\alpha}\right)\\
+\end{dmath*}
+
+\section{Vibronic Hamiltonian operator in the real $E$ basis}
+$\hat{H}=\left(\begin{matrix}{\left|X_\alpha\right\rangle } & {\left|Y_\alpha\right\rangle } & {\left|X_\beta\right\rangle } & {\left|Y_\beta\right\rangle }\end{matrix}\right) \left(\begin{matrix}0 & 0 & H_{X_{\alpha}X_{\beta}} & H_{X_{\alpha}Y_{\beta}}\\0 & 0 & H_{Y_{\alpha}X_{\beta}} & H_{Y_{\alpha}Y_{\beta}}\\H_{X_{\beta}X_{\alpha}} & H_{X_{\beta}Y_{\alpha}} & 0 & 0\\H_{Y_{\beta}X_{\alpha}} & H_{Y_{\beta}Y_{\alpha}} & 0 & 0\end{matrix}\right) \left(\begin{matrix}{\left\langle X_\alpha\right|}\\{\left\langle Y_\alpha\right|}\\{\left\langle X_\beta\right|}\\{\left\langle Y_\beta\right|}\end{matrix}\right)$\\$H_{+_{\alpha}+_{\beta}}=H_{+_{\alpha}+_{\beta}}={H_{-_{\alpha}-_{\beta}}}^*={H_{+_{\beta}+_{\alpha}}}^*=H_{-_{\beta}-_{\alpha}}\\H_{+_{\alpha}-_{\beta}}=H_{+_{\alpha}-_{\beta}}={H_{-_{\alpha}+_{\beta}}}^*=H_{+_{\beta}-_{\alpha}}={H_{-_{\beta}+_{\alpha}}}^*\\$
+\section{Matrix element expansions in the real $E$ basis}
+\subsection{Order: 0}
+Number of fitting parameters: $H_{X_{\alpha}X_{\beta}}$: $1$ (all from $H_{+_{\alpha}+_{\beta}}$), $H_{X_{\alpha}Y_{\beta}}$: $1$ (all from $H_{+_{\alpha}+_{\beta}}$), $H_{Y_{\alpha}X_{\beta}}$: $1$ (all from $H_{+_{\alpha}+_{\beta}}$), $H_{Y_{\alpha}Y_{\beta}}$: $1$ (all from $H_{+_{\alpha}+_{\beta}}$), $H_{X_{\beta}X_{\alpha}}$: $1$ (all from $H_{+_{\alpha}+_{\beta}}$), $H_{X_{\beta}Y_{\alpha}}$: $1$ (all from $H_{+_{\alpha}+_{\beta}}$), $H_{Y_{\beta}X_{\alpha}}$: $1$ (all from $H_{+_{\alpha}+_{\beta}}$), $H_{Y_{\beta}Y_{\alpha}}$: $1$ (all from $H_{+_{\alpha}+_{\beta}}$).
+\subsubsection*{Polar e-coordinates:}
+
+\begin{dmath*}
+H_{X_{\alpha}X_{\beta}}^{(0)}=a^{r}_{0,0,0,0}\\
+\end{dmath*}
+
+\begin{dmath*}
+H_{X_{\alpha}Y_{\beta}}^{(0)}= a^{i}_{0,0,0,0}\\
+\end{dmath*}
+
+\begin{dmath*}
+H_{Y_{\alpha}X_{\beta}}^{(0)}=-  a^{i}_{0,0,0,0}\\
+\end{dmath*}
+
+\begin{dmath*}
+H_{Y_{\alpha}Y_{\beta}}^{(0)}= a^{r}_{0,0,0,0}\\
+\end{dmath*}
+
+\begin{dmath*}
+H_{X_{\beta}X_{\alpha}}^{(0)}=a^{r}_{0,0,0,0}\\
+\end{dmath*}
+
+\begin{dmath*}
+H_{X_{\beta}Y_{\alpha}}^{(0)}=-  a^{i}_{0,0,0,0}\\
+\end{dmath*}
+
+\begin{dmath*}
+H_{Y_{\beta}X_{\alpha}}^{(0)}= a^{i}_{0,0,0,0}\\
+\end{dmath*}
+
+\begin{dmath*}
+H_{Y_{\beta}Y_{\alpha}}^{(0)}= a^{r}_{0,0,0,0}\\
+\end{dmath*}
+\subsubsection*{Cartesian e-coordinates:}
+
+\begin{dmath*}
+H_{X_{\alpha}X_{\beta}}^{(0)}=a^{r}_{0,0,0,0}\\
+\end{dmath*}
+
+\begin{dmath*}
+H_{X_{\alpha}Y_{\beta}}^{(0)}= a^{i}_{0,0,0,0}\\
+\end{dmath*}
+
+\begin{dmath*}
+H_{Y_{\alpha}X_{\beta}}^{(0)}=-  a^{i}_{0,0,0,0}\\
+\end{dmath*}
+
+\begin{dmath*}
+H_{Y_{\alpha}Y_{\beta}}^{(0)}= a^{r}_{0,0,0,0}\\
+\end{dmath*}
+
+\begin{dmath*}
+H_{X_{\beta}X_{\alpha}}^{(0)}=a^{r}_{0,0,0,0}\\
+\end{dmath*}
+
+\begin{dmath*}
+H_{X_{\beta}Y_{\alpha}}^{(0)}=-  a^{i}_{0,0,0,0}\\
+\end{dmath*}
+
+\begin{dmath*}
+H_{Y_{\beta}X_{\alpha}}^{(0)}= a^{i}_{0,0,0,0}\\
+\end{dmath*}
+
+\begin{dmath*}
+H_{Y_{\beta}Y_{\alpha}}^{(0)}= a^{r}_{0,0,0,0}\\
+\end{dmath*}
+\subsection{Order: 1}
+Number of fitting parameters: $H_{X_{\alpha}X_{\beta}}$: $4$ (all from $H_{+_{\alpha}-_{\beta}}$), $H_{X_{\alpha}Y_{\beta}}$: $4$ (all from $H_{+_{\alpha}-_{\beta}}$), $H_{Y_{\alpha}X_{\beta}}$: $4$ (all from $H_{+_{\alpha}-_{\beta}}$), $H_{Y_{\alpha}Y_{\beta}}$: $4$ (all from $H_{+_{\alpha}-_{\beta}}$), $H_{X_{\beta}X_{\alpha}}$: $4$ (all from $H_{+_{\alpha}-_{\beta}}$), $H_{X_{\beta}Y_{\alpha}}$: $4$ (all from $H_{+_{\alpha}-_{\beta}}$), $H_{Y_{\beta}X_{\alpha}}$: $4$ (all from $H_{+_{\alpha}-_{\beta}}$), $H_{Y_{\beta}Y_{\alpha}}$: $4$ (all from $H_{+_{\alpha}-_{\beta}}$).
+\subsubsection*{Polar e-coordinates:}
+
+\begin{dmath*}
+H_{X_{\alpha}X_{\beta}}^{(1)}=b^{i}_{0,0,-1,-1} \rho_{\alpha} \sin{\left (\phi_{\alpha} \right )} + b^{i}_{0,0,0,-1} \rho_{\beta} \sin{\left (\phi_{\beta} \right )} + b^{r}_{0,0,-1,-1} \rho_{\alpha} \cos{\left (\phi_{\alpha} \right )} + b^{r}_{0,0,0,-1} \rho_{\beta} \cos{\left (\phi_{\beta} \right )}\\
+\end{dmath*}
+
+\begin{dmath*}
+H_{X_{\alpha}Y_{\beta}}^{(1)}=-  b^{i}_{0,0,-1,-1} \rho_{\alpha} \cos{\left (\phi_{\alpha} \right )} -  b^{i}_{0,0,0,-1} \rho_{\beta} \cos{\left (\phi_{\beta} \right )} +  b^{r}_{0,0,-1,-1} \rho_{\alpha} \sin{\left (\phi_{\alpha} \right )} +  b^{r}_{0,0,0,-1} \rho_{\beta} \sin{\left (\phi_{\beta} \right )}\\
+\end{dmath*}
+
+\begin{dmath*}
+H_{Y_{\alpha}X_{\beta}}^{(1)}=-  b^{i}_{0,0,-1,-1} \rho_{\alpha} \cos{\left (\phi_{\alpha} \right )} -  b^{i}_{0,0,0,-1} \rho_{\beta} \cos{\left (\phi_{\beta} \right )} +  b^{r}_{0,0,-1,-1} \rho_{\alpha} \sin{\left (\phi_{\alpha} \right )} +  b^{r}_{0,0,0,-1} \rho_{\beta} \sin{\left (\phi_{\beta} \right )}\\
+\end{dmath*}
+
+\begin{dmath*}
+H_{Y_{\alpha}Y_{\beta}}^{(1)}=-  b^{i}_{0,0,-1,-1} \rho_{\alpha} \sin{\left (\phi_{\alpha} \right )} -  b^{i}_{0,0,0,-1} \rho_{\beta} \sin{\left (\phi_{\beta} \right )} -  b^{r}_{0,0,-1,-1} \rho_{\alpha} \cos{\left (\phi_{\alpha} \right )} -  b^{r}_{0,0,0,-1} \rho_{\beta} \cos{\left (\phi_{\beta} \right )}\\
+\end{dmath*}
+
+\begin{dmath*}
+H_{X_{\beta}X_{\alpha}}^{(1)}=b^{i}_{0,0,-1,-1} \rho_{\alpha} \sin{\left (\phi_{\alpha} \right )} + b^{i}_{0,0,0,-1} \rho_{\beta} \sin{\left (\phi_{\beta} \right )} + b^{r}_{0,0,-1,-1} \rho_{\alpha} \cos{\left (\phi_{\alpha} \right )} + b^{r}_{0,0,0,-1} \rho_{\beta} \cos{\left (\phi_{\beta} \right )}\\
+\end{dmath*}
+
+\begin{dmath*}
+H_{X_{\beta}Y_{\alpha}}^{(1)}=-  b^{i}_{0,0,-1,-1} \rho_{\alpha} \cos{\left (\phi_{\alpha} \right )} -  b^{i}_{0,0,0,-1} \rho_{\beta} \cos{\left (\phi_{\beta} \right )} +  b^{r}_{0,0,-1,-1} \rho_{\alpha} \sin{\left (\phi_{\alpha} \right )} +  b^{r}_{0,0,0,-1} \rho_{\beta} \sin{\left (\phi_{\beta} \right )}\\
+\end{dmath*}
+
+\begin{dmath*}
+H_{Y_{\beta}X_{\alpha}}^{(1)}=-  b^{i}_{0,0,-1,-1} \rho_{\alpha} \cos{\left (\phi_{\alpha} \right )} -  b^{i}_{0,0,0,-1} \rho_{\beta} \cos{\left (\phi_{\beta} \right )} +  b^{r}_{0,0,-1,-1} \rho_{\alpha} \sin{\left (\phi_{\alpha} \right )} +  b^{r}_{0,0,0,-1} \rho_{\beta} \sin{\left (\phi_{\beta} \right )}\\
+\end{dmath*}
+
+\begin{dmath*}
+H_{Y_{\beta}Y_{\alpha}}^{(1)}=-  b^{i}_{0,0,-1,-1} \rho_{\alpha} \sin{\left (\phi_{\alpha} \right )} -  b^{i}_{0,0,0,-1} \rho_{\beta} \sin{\left (\phi_{\beta} \right )} -  b^{r}_{0,0,-1,-1} \rho_{\alpha} \cos{\left (\phi_{\alpha} \right )} -  b^{r}_{0,0,0,-1} \rho_{\beta} \cos{\left (\phi_{\beta} \right )}\\
+\end{dmath*}
+\subsubsection*{Cartesian e-coordinates:}
+
+\begin{dmath*}
+H_{X_{\alpha}X_{\beta}}^{(1)}=b^{i}_{0,0,-1,-1} y_{\alpha} + b^{i}_{0,0,0,-1} y_{\beta} + b^{r}_{0,0,-1,-1} x_{\alpha} + b^{r}_{0,0,0,-1} x_{\beta}\\
+\end{dmath*}
+
+\begin{dmath*}
+H_{X_{\alpha}Y_{\beta}}^{(1)}=-  b^{i}_{0,0,-1,-1} x_{\alpha} -  b^{i}_{0,0,0,-1} x_{\beta} +  b^{r}_{0,0,-1,-1} y_{\alpha} +  b^{r}_{0,0,0,-1} y_{\beta}\\
+\end{dmath*}
+
+\begin{dmath*}
+H_{Y_{\alpha}X_{\beta}}^{(1)}=-  b^{i}_{0,0,-1,-1} x_{\alpha} -  b^{i}_{0,0,0,-1} x_{\beta} +  b^{r}_{0,0,-1,-1} y_{\alpha} +  b^{r}_{0,0,0,-1} y_{\beta}\\
+\end{dmath*}
+
+\begin{dmath*}
+H_{Y_{\alpha}Y_{\beta}}^{(1)}=-  b^{i}_{0,0,-1,-1} y_{\alpha} -  b^{i}_{0,0,0,-1} y_{\beta} -  b^{r}_{0,0,-1,-1} x_{\alpha} -  b^{r}_{0,0,0,-1} x_{\beta}\\
+\end{dmath*}
+
+\begin{dmath*}
+H_{X_{\beta}X_{\alpha}}^{(1)}=b^{i}_{0,0,-1,-1} y_{\alpha} + b^{i}_{0,0,0,-1} y_{\beta} + b^{r}_{0,0,-1,-1} x_{\alpha} + b^{r}_{0,0,0,-1} x_{\beta}\\
+\end{dmath*}
+
+\begin{dmath*}
+H_{X_{\beta}Y_{\alpha}}^{(1)}=-  b^{i}_{0,0,-1,-1} x_{\alpha} -  b^{i}_{0,0,0,-1} x_{\beta} +  b^{r}_{0,0,-1,-1} y_{\alpha} +  b^{r}_{0,0,0,-1} y_{\beta}\\
+\end{dmath*}
+
+\begin{dmath*}
+H_{Y_{\beta}X_{\alpha}}^{(1)}=-  b^{i}_{0,0,-1,-1} x_{\alpha} -  b^{i}_{0,0,0,-1} x_{\beta} +  b^{r}_{0,0,-1,-1} y_{\alpha} +  b^{r}_{0,0,0,-1} y_{\beta}\\
+\end{dmath*}
+
+\begin{dmath*}
+H_{Y_{\beta}Y_{\alpha}}^{(1)}=-  b^{i}_{0,0,-1,-1} y_{\alpha} -  b^{i}_{0,0,0,-1} y_{\beta} -  b^{r}_{0,0,-1,-1} x_{\alpha} -  b^{r}_{0,0,0,-1} x_{\beta}\\
+\end{dmath*}
+\subsection{Order: 2}
+Number of fitting parameters: $H_{X_{\alpha}X_{\beta}}$: $12$ ($6$ from $H_{+_{\alpha}+_{\beta}}$, $6$ from $H_{+_{\alpha}-_{\beta}}$), $H_{X_{\alpha}Y_{\beta}}$: $12$ ($6$ from $H_{+_{\alpha}+_{\beta}}$, $6$ from $H_{+_{\alpha}-_{\beta}}$), $H_{Y_{\alpha}X_{\beta}}$: $12$ ($6$ from $H_{+_{\alpha}+_{\beta}}$, $6$ from $H_{+_{\alpha}-_{\beta}}$), $H_{Y_{\alpha}Y_{\beta}}$: $12$ ($6$ from $H_{+_{\alpha}+_{\beta}}$, $6$ from $H_{+_{\alpha}-_{\beta}}$), $H_{X_{\beta}X_{\alpha}}$: $12$ ($6$ from $H_{+_{\alpha}+_{\beta}}$, $6$ from $H_{+_{\alpha}-_{\beta}}$), $H_{X_{\beta}Y_{\alpha}}$: $12$ ($6$ from $H_{+_{\alpha}+_{\beta}}$, $6$ from $H_{+_{\alpha}-_{\beta}}$), $H_{Y_{\beta}X_{\alpha}}$: $12$ ($6$ from $H_{+_{\alpha}-_{\beta}}$, $6$ from $H_{+_{\alpha}+_{\beta}}$), $H_{Y_{\beta}Y_{\alpha}}$: $12$ ($6$ from $H_{+_{\alpha}+_{\beta}}$, $6$ from $H_{+_{\alpha}-_{\beta}}$).
+\subsubsection*{Polar e-coordinates:}
+
+\begin{dmath*}
+H_{X_{\alpha}X_{\beta}}^{(2)}=a^{i}_{0,0,-1,0} \rho_{\alpha} \rho_{\beta} \sin{\left (\phi_{\alpha} - \phi_{\beta} \right )} - a^{i}_{0,0,1,0} \rho_{\alpha} \rho_{\beta} \sin{\left (\phi_{\alpha} - \phi_{\beta} \right )} + a^{r}_{0,0,-1,0} \rho_{\alpha} \rho_{\beta} \cos{\left (\phi_{\alpha} - \phi_{\beta} \right )} + a^{r}_{0,0,1,0} \rho_{\alpha} \rho_{\beta} \cos{\left (\phi_{\alpha} - \phi_{\beta} \right )} + a^{r}_{0,2,0,0} \rho_{\beta}^{2} + a^{r}_{2,0,0,0} \rho_{\alpha}^{2} - b^{i}_{0,0,0,2} \rho_{\beta}^{2} \sin{\left (2 \phi_{\beta} \right )} - b^{i}_{0,0,1,2} \rho_{\alpha} \rho_{\beta} \sin{\left (\phi_{\alpha} + \phi_{\beta} \right )} - b^{i}_{0,0,2,2} \rho_{\alpha}^{2} \sin{\left (2 \phi_{\alpha} \right )} + b^{r}_{0,0,0,2} \rho_{\beta}^{2} \cos{\left (2 \phi_{\beta} \right )} + b^{r}_{0,0,1,2} \rho_{\alpha} \rho_{\beta} \cos{\left (\phi_{\alpha} + \phi_{\beta} \right )} + b^{r}_{0,0,2,2} \rho_{\alpha}^{2} \cos{\left (2 \phi_{\alpha} \right )}\\
+\end{dmath*}
+
+\begin{dmath*}
+H_{X_{\alpha}Y_{\beta}}^{(2)}= a^{i}_{0,0,-1,0} \rho_{\alpha} \rho_{\beta} \cos{\left (\phi_{\alpha} - \phi_{\beta} \right )} +  a^{i}_{0,0,1,0} \rho_{\alpha} \rho_{\beta} \cos{\left (\phi_{\alpha} - \phi_{\beta} \right )} +  a^{i}_{0,2,0,0} \rho_{\beta}^{2} +  a^{i}_{2,0,0,0} \rho_{\alpha}^{2} -  a^{r}_{0,0,-1,0} \rho_{\alpha} \rho_{\beta} \sin{\left (\phi_{\alpha} - \phi_{\beta} \right )} +  a^{r}_{0,0,1,0} \rho_{\alpha} \rho_{\beta} \sin{\left (\phi_{\alpha} - \phi_{\beta} \right )} -  b^{i}_{0,0,0,2} \rho_{\beta}^{2} \cos{\left (2 \phi_{\beta} \right )} -  b^{i}_{0,0,1,2} \rho_{\alpha} \rho_{\beta} \cos{\left (\phi_{\alpha} + \phi_{\beta} \right )} -  b^{i}_{0,0,2,2} \rho_{\alpha}^{2} \cos{\left (2 \phi_{\alpha} \right )} -  b^{r}_{0,0,0,2} \rho_{\beta}^{2} \sin{\left (2 \phi_{\beta} \right )} -  b^{r}_{0,0,1,2} \rho_{\alpha} \rho_{\beta} \sin{\left (\phi_{\alpha} + \phi_{\beta} \right )} -  b^{r}_{0,0,2,2} \rho_{\alpha}^{2} \sin{\left (2 \phi_{\alpha} \right )}\\
+\end{dmath*}
+
+\begin{dmath*}
+H_{Y_{\alpha}X_{\beta}}^{(2)}=-  a^{i}_{0,0,-1,0} \rho_{\alpha} \rho_{\beta} \cos{\left (\phi_{\alpha} - \phi_{\beta} \right )} -  a^{i}_{0,0,1,0} \rho_{\alpha} \rho_{\beta} \cos{\left (\phi_{\alpha} - \phi_{\beta} \right )} -  a^{i}_{0,2,0,0} \rho_{\beta}^{2} -  a^{i}_{2,0,0,0} \rho_{\alpha}^{2} +  a^{r}_{0,0,-1,0} \rho_{\alpha} \rho_{\beta} \sin{\left (\phi_{\alpha} - \phi_{\beta} \right )} -  a^{r}_{0,0,1,0} \rho_{\alpha} \rho_{\beta} \sin{\left (\phi_{\alpha} - \phi_{\beta} \right )} -  b^{i}_{0,0,0,2} \rho_{\beta}^{2} \cos{\left (2 \phi_{\beta} \right )} -  b^{i}_{0,0,1,2} \rho_{\alpha} \rho_{\beta} \cos{\left (\phi_{\alpha} + \phi_{\beta} \right )} -  b^{i}_{0,0,2,2} \rho_{\alpha}^{2} \cos{\left (2 \phi_{\alpha} \right )} -  b^{r}_{0,0,0,2} \rho_{\beta}^{2} \sin{\left (2 \phi_{\beta} \right )} -  b^{r}_{0,0,1,2} \rho_{\alpha} \rho_{\beta} \sin{\left (\phi_{\alpha} + \phi_{\beta} \right )} -  b^{r}_{0,0,2,2} \rho_{\alpha}^{2} \sin{\left (2 \phi_{\alpha} \right )}\\
+\end{dmath*}
+
+\begin{dmath*}
+H_{Y_{\alpha}Y_{\beta}}^{(2)}= a^{i}_{0,0,-1,0} \rho_{\alpha} \rho_{\beta} \sin{\left (\phi_{\alpha} - \phi_{\beta} \right )} -  a^{i}_{0,0,1,0} \rho_{\alpha} \rho_{\beta} \sin{\left (\phi_{\alpha} - \phi_{\beta} \right )} +  a^{r}_{0,0,-1,0} \rho_{\alpha} \rho_{\beta} \cos{\left (\phi_{\alpha} - \phi_{\beta} \right )} +  a^{r}_{0,0,1,0} \rho_{\alpha} \rho_{\beta} \cos{\left (\phi_{\alpha} - \phi_{\beta} \right )} +  a^{r}_{0,2,0,0} \rho_{\beta}^{2} +  a^{r}_{2,0,0,0} \rho_{\alpha}^{2} +  b^{i}_{0,0,0,2} \rho_{\beta}^{2} \sin{\left (2 \phi_{\beta} \right )} +  b^{i}_{0,0,1,2} \rho_{\alpha} \rho_{\beta} \sin{\left (\phi_{\alpha} + \phi_{\beta} \right )} +  b^{i}_{0,0,2,2} \rho_{\alpha}^{2} \sin{\left (2 \phi_{\alpha} \right )} -  b^{r}_{0,0,0,2} \rho_{\beta}^{2} \cos{\left (2 \phi_{\beta} \right )} -  b^{r}_{0,0,1,2} \rho_{\alpha} \rho_{\beta} \cos{\left (\phi_{\alpha} + \phi_{\beta} \right )} -  b^{r}_{0,0,2,2} \rho_{\alpha}^{2} \cos{\left (2 \phi_{\alpha} \right )}\\
+\end{dmath*}
+
+\begin{dmath*}
+H_{X_{\beta}X_{\alpha}}^{(2)}=a^{i}_{0,0,-1,0} \rho_{\alpha} \rho_{\beta} \sin{\left (\phi_{\alpha} - \phi_{\beta} \right )} - a^{i}_{0,0,1,0} \rho_{\alpha} \rho_{\beta} \sin{\left (\phi_{\alpha} - \phi_{\beta} \right )} + a^{r}_{0,0,-1,0} \rho_{\alpha} \rho_{\beta} \cos{\left (\phi_{\alpha} - \phi_{\beta} \right )} + a^{r}_{0,0,1,0} \rho_{\alpha} \rho_{\beta} \cos{\left (\phi_{\alpha} - \phi_{\beta} \right )} + a^{r}_{0,2,0,0} \rho_{\beta}^{2} + a^{r}_{2,0,0,0} \rho_{\alpha}^{2} - b^{i}_{0,0,0,2} \rho_{\beta}^{2} \sin{\left (2 \phi_{\beta} \right )} - b^{i}_{0,0,1,2} \rho_{\alpha} \rho_{\beta} \sin{\left (\phi_{\alpha} + \phi_{\beta} \right )} - b^{i}_{0,0,2,2} \rho_{\alpha}^{2} \sin{\left (2 \phi_{\alpha} \right )} + b^{r}_{0,0,0,2} \rho_{\beta}^{2} \cos{\left (2 \phi_{\beta} \right )} + b^{r}_{0,0,1,2} \rho_{\alpha} \rho_{\beta} \cos{\left (\phi_{\alpha} + \phi_{\beta} \right )} + b^{r}_{0,0,2,2} \rho_{\alpha}^{2} \cos{\left (2 \phi_{\alpha} \right )}\\
+\end{dmath*}
+
+\begin{dmath*}
+H_{X_{\beta}Y_{\alpha}}^{(2)}=-  a^{i}_{0,0,-1,0} \rho_{\alpha} \rho_{\beta} \cos{\left (\phi_{\alpha} - \phi_{\beta} \right )} -  a^{i}_{0,0,1,0} \rho_{\alpha} \rho_{\beta} \cos{\left (\phi_{\alpha} - \phi_{\beta} \right )} -  a^{i}_{0,2,0,0} \rho_{\beta}^{2} -  a^{i}_{2,0,0,0} \rho_{\alpha}^{2} +  a^{r}_{0,0,-1,0} \rho_{\alpha} \rho_{\beta} \sin{\left (\phi_{\alpha} - \phi_{\beta} \right )} -  a^{r}_{0,0,1,0} \rho_{\alpha} \rho_{\beta} \sin{\left (\phi_{\alpha} - \phi_{\beta} \right )} -  b^{i}_{0,0,0,2} \rho_{\beta}^{2} \cos{\left (2 \phi_{\beta} \right )} -  b^{i}_{0,0,1,2} \rho_{\alpha} \rho_{\beta} \cos{\left (\phi_{\alpha} + \phi_{\beta} \right )} -  b^{i}_{0,0,2,2} \rho_{\alpha}^{2} \cos{\left (2 \phi_{\alpha} \right )} -  b^{r}_{0,0,0,2} \rho_{\beta}^{2} \sin{\left (2 \phi_{\beta} \right )} -  b^{r}_{0,0,1,2} \rho_{\alpha} \rho_{\beta} \sin{\left (\phi_{\alpha} + \phi_{\beta} \right )} -  b^{r}_{0,0,2,2} \rho_{\alpha}^{2} \sin{\left (2 \phi_{\alpha} \right )}\\
+\end{dmath*}
+
+\begin{dmath*}
+H_{Y_{\beta}X_{\alpha}}^{(2)}= a^{i}_{0,0,-1,0} \rho_{\alpha} \rho_{\beta} \cos{\left (\phi_{\alpha} - \phi_{\beta} \right )} +  a^{i}_{0,0,1,0} \rho_{\alpha} \rho_{\beta} \cos{\left (\phi_{\alpha} - \phi_{\beta} \right )} +  a^{i}_{0,2,0,0} \rho_{\beta}^{2} +  a^{i}_{2,0,0,0} \rho_{\alpha}^{2} -  a^{r}_{0,0,-1,0} \rho_{\alpha} \rho_{\beta} \sin{\left (\phi_{\alpha} - \phi_{\beta} \right )} +  a^{r}_{0,0,1,0} \rho_{\alpha} \rho_{\beta} \sin{\left (\phi_{\alpha} - \phi_{\beta} \right )} -  b^{i}_{0,0,0,2} \rho_{\beta}^{2} \cos{\left (2 \phi_{\beta} \right )} -  b^{i}_{0,0,1,2} \rho_{\alpha} \rho_{\beta} \cos{\left (\phi_{\alpha} + \phi_{\beta} \right )} -  b^{i}_{0,0,2,2} \rho_{\alpha}^{2} \cos{\left (2 \phi_{\alpha} \right )} -  b^{r}_{0,0,0,2} \rho_{\beta}^{2} \sin{\left (2 \phi_{\beta} \right )} -  b^{r}_{0,0,1,2} \rho_{\alpha} \rho_{\beta} \sin{\left (\phi_{\alpha} + \phi_{\beta} \right )} -  b^{r}_{0,0,2,2} \rho_{\alpha}^{2} \sin{\left (2 \phi_{\alpha} \right )}\\
+\end{dmath*}
+
+\begin{dmath*}
+H_{Y_{\beta}Y_{\alpha}}^{(2)}= a^{i}_{0,0,-1,0} \rho_{\alpha} \rho_{\beta} \sin{\left (\phi_{\alpha} - \phi_{\beta} \right )} -  a^{i}_{0,0,1,0} \rho_{\alpha} \rho_{\beta} \sin{\left (\phi_{\alpha} - \phi_{\beta} \right )} +  a^{r}_{0,0,-1,0} \rho_{\alpha} \rho_{\beta} \cos{\left (\phi_{\alpha} - \phi_{\beta} \right )} +  a^{r}_{0,0,1,0} \rho_{\alpha} \rho_{\beta} \cos{\left (\phi_{\alpha} - \phi_{\beta} \right )} +  a^{r}_{0,2,0,0} \rho_{\beta}^{2} +  a^{r}_{2,0,0,0} \rho_{\alpha}^{2} +  b^{i}_{0,0,0,2} \rho_{\beta}^{2} \sin{\left (2 \phi_{\beta} \right )} +  b^{i}_{0,0,1,2} \rho_{\alpha} \rho_{\beta} \sin{\left (\phi_{\alpha} + \phi_{\beta} \right )} +  b^{i}_{0,0,2,2} \rho_{\alpha}^{2} \sin{\left (2 \phi_{\alpha} \right )} -  b^{r}_{0,0,0,2} \rho_{\beta}^{2} \cos{\left (2 \phi_{\beta} \right )} -  b^{r}_{0,0,1,2} \rho_{\alpha} \rho_{\beta} \cos{\left (\phi_{\alpha} + \phi_{\beta} \right )} -  b^{r}_{0,0,2,2} \rho_{\alpha}^{2} \cos{\left (2 \phi_{\alpha} \right )}\\
+\end{dmath*}
+\subsubsection*{Cartesian e-coordinates:}
+
+\begin{dmath*}
+H_{X_{\alpha}X_{\beta}}^{(2)}=- a^{i}_{0,0,-1,0} \left(x_{\alpha} y_{\beta} - x_{\beta} y_{\alpha}\right) + a^{i}_{0,0,1,0} \left(x_{\alpha} y_{\beta} - x_{\beta} y_{\alpha}\right) + a^{r}_{0,0,-1,0} \left(x_{\alpha} x_{\beta} + y_{\alpha} y_{\beta}\right) + a^{r}_{0,0,1,0} \left(x_{\alpha} x_{\beta} + y_{\alpha} y_{\beta}\right) + a^{r}_{0,2,0,0} \left(x_{\beta}^{2} + y_{\beta}^{2}\right) + a^{r}_{2,0,0,0} \left(x_{\alpha}^{2} + y_{\alpha}^{2}\right) - 2 b^{i}_{0,0,0,2} x_{\beta} y_{\beta} - b^{i}_{0,0,1,2} \left(x_{\alpha} y_{\beta} + x_{\beta} y_{\alpha}\right) - 2 b^{i}_{0,0,2,2} x_{\alpha} y_{\alpha} + b^{r}_{0,0,0,2} \left(x_{\beta} - y_{\beta}\right) \left(x_{\beta} + y_{\beta}\right) + b^{r}_{0,0,1,2} \left(x_{\alpha} x_{\beta} - y_{\alpha} y_{\beta}\right) + b^{r}_{0,0,2,2} \left(x_{\alpha} - y_{\alpha}\right) \left(x_{\alpha} + y_{\alpha}\right)\\
+\end{dmath*}
+
+\begin{dmath*}
+H_{X_{\alpha}Y_{\beta}}^{(2)}= a^{i}_{0,0,-1,0} \left(x_{\alpha} x_{\beta} + y_{\alpha} y_{\beta}\right) +  a^{i}_{0,0,1,0} \left(x_{\alpha} x_{\beta} + y_{\alpha} y_{\beta}\right) +  a^{i}_{0,2,0,0} \left(x_{\beta}^{2} + y_{\beta}^{2}\right) +  a^{i}_{2,0,0,0} \left(x_{\alpha}^{2} + y_{\alpha}^{2}\right) +  a^{r}_{0,0,-1,0} \left(x_{\alpha} y_{\beta} - x_{\beta} y_{\alpha}\right) -  a^{r}_{0,0,1,0} \left(x_{\alpha} y_{\beta} - x_{\beta} y_{\alpha}\right) -  b^{i}_{0,0,0,2} \left(x_{\beta} - y_{\beta}\right) \left(x_{\beta} + y_{\beta}\right) -  b^{i}_{0,0,1,2} \left(x_{\alpha} x_{\beta} - y_{\alpha} y_{\beta}\right) -  b^{i}_{0,0,2,2} \left(x_{\alpha} - y_{\alpha}\right) \left(x_{\alpha} + y_{\alpha}\right) - 2 b^{r}_{0,0,0,2} x_{\beta} y_{\beta} -  b^{r}_{0,0,1,2} \left(x_{\alpha} y_{\beta} + x_{\beta} y_{\alpha}\right) - 2 b^{r}_{0,0,2,2} x_{\alpha} y_{\alpha}\\
+\end{dmath*}
+
+\begin{dmath*}
+H_{Y_{\alpha}X_{\beta}}^{(2)}=-  a^{i}_{0,0,-1,0} \left(x_{\alpha} x_{\beta} + y_{\alpha} y_{\beta}\right) -  a^{i}_{0,0,1,0} \left(x_{\alpha} x_{\beta} + y_{\alpha} y_{\beta}\right) -  a^{i}_{0,2,0,0} \left(x_{\beta}^{2} + y_{\beta}^{2}\right) -  a^{i}_{2,0,0,0} \left(x_{\alpha}^{2} + y_{\alpha}^{2}\right) -  a^{r}_{0,0,-1,0} \left(x_{\alpha} y_{\beta} - x_{\beta} y_{\alpha}\right) +  a^{r}_{0,0,1,0} \left(x_{\alpha} y_{\beta} - x_{\beta} y_{\alpha}\right) -  b^{i}_{0,0,0,2} \left(x_{\beta} - y_{\beta}\right) \left(x_{\beta} + y_{\beta}\right) -  b^{i}_{0,0,1,2} \left(x_{\alpha} x_{\beta} - y_{\alpha} y_{\beta}\right) -  b^{i}_{0,0,2,2} \left(x_{\alpha} - y_{\alpha}\right) \left(x_{\alpha} + y_{\alpha}\right) - 2 b^{r}_{0,0,0,2} x_{\beta} y_{\beta} -  b^{r}_{0,0,1,2} \left(x_{\alpha} y_{\beta} + x_{\beta} y_{\alpha}\right) - 2 b^{r}_{0,0,2,2} x_{\alpha} y_{\alpha}\\
+\end{dmath*}
+
+\begin{dmath*}
+H_{Y_{\alpha}Y_{\beta}}^{(2)}=-  a^{i}_{0,0,-1,0} \left(x_{\alpha} y_{\beta} - x_{\beta} y_{\alpha}\right) +  a^{i}_{0,0,1,0} \left(x_{\alpha} y_{\beta} - x_{\beta} y_{\alpha}\right) +  a^{r}_{0,0,-1,0} \left(x_{\alpha} x_{\beta} + y_{\alpha} y_{\beta}\right) +  a^{r}_{0,0,1,0} \left(x_{\alpha} x_{\beta} + y_{\alpha} y_{\beta}\right) +  a^{r}_{0,2,0,0} \left(x_{\beta}^{2} + y_{\beta}^{2}\right) +  a^{r}_{2,0,0,0} \left(x_{\alpha}^{2} + y_{\alpha}^{2}\right) + 2 b^{i}_{0,0,0,2} x_{\beta} y_{\beta} +  b^{i}_{0,0,1,2} \left(x_{\alpha} y_{\beta} + x_{\beta} y_{\alpha}\right) + 2 b^{i}_{0,0,2,2} x_{\alpha} y_{\alpha} -  b^{r}_{0,0,0,2} \left(x_{\beta} - y_{\beta}\right) \left(x_{\beta} + y_{\beta}\right) -  b^{r}_{0,0,1,2} \left(x_{\alpha} x_{\beta} - y_{\alpha} y_{\beta}\right) -  b^{r}_{0,0,2,2} \left(x_{\alpha} - y_{\alpha}\right) \left(x_{\alpha} + y_{\alpha}\right)\\
+\end{dmath*}
+
+\begin{dmath*}
+H_{X_{\beta}X_{\alpha}}^{(2)}=- a^{i}_{0,0,-1,0} \left(x_{\alpha} y_{\beta} - x_{\beta} y_{\alpha}\right) + a^{i}_{0,0,1,0} \left(x_{\alpha} y_{\beta} - x_{\beta} y_{\alpha}\right) + a^{r}_{0,0,-1,0} \left(x_{\alpha} x_{\beta} + y_{\alpha} y_{\beta}\right) + a^{r}_{0,0,1,0} \left(x_{\alpha} x_{\beta} + y_{\alpha} y_{\beta}\right) + a^{r}_{0,2,0,0} \left(x_{\beta}^{2} + y_{\beta}^{2}\right) + a^{r}_{2,0,0,0} \left(x_{\alpha}^{2} + y_{\alpha}^{2}\right) - 2 b^{i}_{0,0,0,2} x_{\beta} y_{\beta} - b^{i}_{0,0,1,2} \left(x_{\alpha} y_{\beta} + x_{\beta} y_{\alpha}\right) - 2 b^{i}_{0,0,2,2} x_{\alpha} y_{\alpha} + b^{r}_{0,0,0,2} \left(x_{\beta} - y_{\beta}\right) \left(x_{\beta} + y_{\beta}\right) + b^{r}_{0,0,1,2} \left(x_{\alpha} x_{\beta} - y_{\alpha} y_{\beta}\right) + b^{r}_{0,0,2,2} \left(x_{\alpha} - y_{\alpha}\right) \left(x_{\alpha} + y_{\alpha}\right)\\
+\end{dmath*}
+
+\begin{dmath*}
+H_{X_{\beta}Y_{\alpha}}^{(2)}=-  a^{i}_{0,0,-1,0} \left(x_{\alpha} x_{\beta} + y_{\alpha} y_{\beta}\right) -  a^{i}_{0,0,1,0} \left(x_{\alpha} x_{\beta} + y_{\alpha} y_{\beta}\right) -  a^{i}_{0,2,0,0} \left(x_{\beta}^{2} + y_{\beta}^{2}\right) -  a^{i}_{2,0,0,0} \left(x_{\alpha}^{2} + y_{\alpha}^{2}\right) -  a^{r}_{0,0,-1,0} \left(x_{\alpha} y_{\beta} - x_{\beta} y_{\alpha}\right) +  a^{r}_{0,0,1,0} \left(x_{\alpha} y_{\beta} - x_{\beta} y_{\alpha}\right) -  b^{i}_{0,0,0,2} \left(x_{\beta} - y_{\beta}\right) \left(x_{\beta} + y_{\beta}\right) -  b^{i}_{0,0,1,2} \left(x_{\alpha} x_{\beta} - y_{\alpha} y_{\beta}\right) -  b^{i}_{0,0,2,2} \left(x_{\alpha} - y_{\alpha}\right) \left(x_{\alpha} + y_{\alpha}\right) - 2 b^{r}_{0,0,0,2} x_{\beta} y_{\beta} -  b^{r}_{0,0,1,2} \left(x_{\alpha} y_{\beta} + x_{\beta} y_{\alpha}\right) - 2 b^{r}_{0,0,2,2} x_{\alpha} y_{\alpha}\\
+\end{dmath*}
+
+\begin{dmath*}
+H_{Y_{\beta}X_{\alpha}}^{(2)}= a^{i}_{0,0,-1,0} \left(x_{\alpha} x_{\beta} + y_{\alpha} y_{\beta}\right) +  a^{i}_{0,0,1,0} \left(x_{\alpha} x_{\beta} + y_{\alpha} y_{\beta}\right) +  a^{i}_{0,2,0,0} \left(x_{\beta}^{2} + y_{\beta}^{2}\right) +  a^{i}_{2,0,0,0} \left(x_{\alpha}^{2} + y_{\alpha}^{2}\right) +  a^{r}_{0,0,-1,0} \left(x_{\alpha} y_{\beta} - x_{\beta} y_{\alpha}\right) -  a^{r}_{0,0,1,0} \left(x_{\alpha} y_{\beta} - x_{\beta} y_{\alpha}\right) -  b^{i}_{0,0,0,2} \left(x_{\beta} - y_{\beta}\right) \left(x_{\beta} + y_{\beta}\right) -  b^{i}_{0,0,1,2} \left(x_{\alpha} x_{\beta} - y_{\alpha} y_{\beta}\right) -  b^{i}_{0,0,2,2} \left(x_{\alpha} - y_{\alpha}\right) \left(x_{\alpha} + y_{\alpha}\right) - 2 b^{r}_{0,0,0,2} x_{\beta} y_{\beta} -  b^{r}_{0,0,1,2} \left(x_{\alpha} y_{\beta} + x_{\beta} y_{\alpha}\right) - 2 b^{r}_{0,0,2,2} x_{\alpha} y_{\alpha}\\
+\end{dmath*}
+
+\begin{dmath*}
+H_{Y_{\beta}Y_{\alpha}}^{(2)}=-  a^{i}_{0,0,-1,0} \left(x_{\alpha} y_{\beta} - x_{\beta} y_{\alpha}\right) +  a^{i}_{0,0,1,0} \left(x_{\alpha} y_{\beta} - x_{\beta} y_{\alpha}\right) +  a^{r}_{0,0,-1,0} \left(x_{\alpha} x_{\beta} + y_{\alpha} y_{\beta}\right) +  a^{r}_{0,0,1,0} \left(x_{\alpha} x_{\beta} + y_{\alpha} y_{\beta}\right) +  a^{r}_{0,2,0,0} \left(x_{\beta}^{2} + y_{\beta}^{2}\right) +  a^{r}_{2,0,0,0} \left(x_{\alpha}^{2} + y_{\alpha}^{2}\right) + 2 b^{i}_{0,0,0,2} x_{\beta} y_{\beta} +  b^{i}_{0,0,1,2} \left(x_{\alpha} y_{\beta} + x_{\beta} y_{\alpha}\right) + 2 b^{i}_{0,0,2,2} x_{\alpha} y_{\alpha} -  b^{r}_{0,0,0,2} \left(x_{\beta} - y_{\beta}\right) \left(x_{\beta} + y_{\beta}\right) -  b^{r}_{0,0,1,2} \left(x_{\alpha} x_{\beta} - y_{\alpha} y_{\beta}\right) -  b^{r}_{0,0,2,2} \left(x_{\alpha} - y_{\alpha}\right) \left(x_{\alpha} + y_{\alpha}\right)\\
+\end{dmath*}
+
+\end{document}

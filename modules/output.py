@@ -123,13 +123,13 @@ def compose_TeX_both_bases(sym,TeX_matrix_complex,TeX_matrix_real,TeX_problem,Te
            R'\section{Vibronic interaction}'+'\n'
            R''+TeX_problem+' in $'+sym[0]+'_{'+sym[1:].lower()+R'}$'+'\n'
            R'\section{Vibronic Hamiltonian operator in the complex $E$ basis}'+'\n'
-           R''+TeX_matrix_complex+'\n'
+           R''+TeX_matrix_complex.replace('__','')+'\n'
            R'\section{Matrix element expansions in the complex $E$ basis}'+'\n'
-           R''+TeX_expansions_complex+'\n'
+           R''+TeX_expansions_complex.replace('__','')+'\n'
            R'\section{Vibronic Hamiltonian operator in the real $E$ basis}'+'\n'
-           R''+TeX_matrix_real+'\n'
+           R''+TeX_matrix_real.replace('__','')+'\n'
            R'\section{Matrix element expansions in the real $E$ basis}'+'\n'
-           R''+TeX_expansions_real+'\n'
+           R''+TeX_expansions_real.replace('__','')+'\n'
            R'\end{document}')
     return TeX_str
 
@@ -155,9 +155,9 @@ def compose_TeX(sym,TeX_matrix,TeX_problem,TeX_expansions):
                R'\section{Vibronic interaction}'+'\n'
                R''+TeX_problem+' in $'+sym[0]+'_{'+sym[1:].lower()+R'}$'+'\n'
                R'\section{Vibronic Hamiltonian operator}'+'\n'
-               R''+TeX_matrix+'\n'
+               R''+TeX_matrix.replace('__','')+'\n'
                R'\section{Matrix element expansions}'+'\n'
-               R''+TeX_expansions+'\n'
+               R''+TeX_expansions.replace('__','')+'\n'
                R'\end{document}')
     return TeX_str
 
