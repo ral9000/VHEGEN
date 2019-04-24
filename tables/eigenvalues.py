@@ -64,6 +64,7 @@ def return_eigenvals(symmetry, states):
 
 						 8: {Symbol('B_alpha__B_beta'):[1,(-1)**(kdelta(refl_parity(states[0]),refl_parity(states[1]))+1),0,(-1)**(kdelta(inver_parity(states[0]),inver_parity(states[1]))+1)]}
 						}
+						
 	if added_dummy == True:
 		del states[-1]
 		

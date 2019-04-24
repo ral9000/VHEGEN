@@ -259,8 +259,7 @@ def dynamic_input():
 def read_input():
     argparser = configure_parser()
     options = argparser.parse_args()
-    cfg_path = options.c
-    config = read_config(cfg_path)
+    config = read_config('config.cfg')
     if config[u'input'] == u'static':
         print("Reading static inputs.")
         #static input
@@ -303,6 +302,9 @@ def read_input():
                     'modes':modes,
                     'o': orders,
                     'f': filename}
+    else:
+        print("Error: 'input' value in config.cfg not found or recognized.")
+        exit()
     return config,problem_dct
 
 def prepare_input(sym,states,modes,orders,filename='output'):
