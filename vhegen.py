@@ -108,7 +108,7 @@ class VHEGEN:
                     count_string += 'Order '+str(o)+':\n'
                     for e in self.count[o]:
                         count_string += 'H_'+str(e) +': '+str(self.count[o][e]) +'\n'
-            if self.basis == 'real' or self.basis == 'both':
+            if self.basis == 'real' or self.basis == 'both' and 'E' in [s[0] for s in self.states]:
                 count_string += '\nNumber of fitting parameters (real): \n\n'
                 for o in self.real_count:
                     count_string += 'Order '+str(o)+':\n'
@@ -194,7 +194,7 @@ class VHEGEN:
         
         TeX_problem = out.problem_format2TeX(self.states,self.modes)
 
-        if self.basis == 'both': #Create two subsections
+        if self.basis == 'both' and 'E' in [s[0] for s in self.states]: #Create two subsections
             TeX_expansions_real = ''
             for o in self.orders:
                 TeX_expansions_real += R'\subsection{Order: '+str(o)+R'}'+'\n'

@@ -251,6 +251,7 @@ def dynamic_input():
     while True:
         yn_prompt = input('Continue? [Y/N]: ')
         if yn_prompt.upper() == 'Y':
+            print('')
             return symmetry, states, modes, orders, filename
         elif yn_prompt.upper() == 'N' or yn_prompt.upper() == 'EXIT':
             exit()

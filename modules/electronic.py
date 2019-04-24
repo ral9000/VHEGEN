@@ -54,7 +54,6 @@ class VibronicMatrix:
         self.original_mat, self.symmetrized_mat, self.transform_mat = return_matrices(states)
         self.symmetry_eigenvals = return_eigenvals(symmetry,states) #Matrix element symmetry eigenvalues
         self.state_components = get_state_components(states) #Matrix ket-bra basis representation
-        self.basis = 'complex'
         self.get_matrix_product_form()
 
     def get_matrix_product_form(self):
@@ -82,42 +81,19 @@ class VibronicMatrix:
                 if conjugate(e) == indep_e:
                     self.dependencies[indep_e].append(conjugate(self.original_mat[c]))
 
-        print('dependencies:')
-        print(self.dependencies)
-
         return self.dependencies
 
-    def format_TeX_dependencies(self):
-        dependencies = '$'
-        for k in self.dependencies:
-
-            dependencies += printing.latex(format_matrix_element(k))
-            for k_i in self.dependencies[k]:
-                dependencies += '='+ printing.latex(format_matrix_element(k_i)) 
-            dependencies += R'\\'
-        dependencies += '$'
-        return dependencies
-
     def format_TeX_mat(self):
-
         tex_mat = deepcopy(self.original_mat)
-
         for c,i in enumerate(tex_mat):
             tex_mat[c] = format_matrix_element(i)
 
         tex_form = UnevaluatedExpr(self.ket_row)*UnevaluatedExpr(tex_mat)*UnevaluatedExpr(self.bra_col)
-
         tex_formatted_form = R'$\hat{H}='+printing.latex(tex_form,mat_delim='(',mat_str='matrix')+'$'
-
-        if self.basis == 'complex':
-            #format dependencies
-            tex_formatted_form += R'\\'+self.format_TeX_dependencies()
             
         return tex_formatted_form
 
     def change_basis(self): #Complex to real matrix transformation
-
-        self.basis = 'real'
 
         symmetrized_mat_expanded = deepcopy(self.symmetrized_mat)
         for c,e in enumerate(symmetrized_mat_expanded): #Expand all elements into real and imaginary parts
@@ -170,10 +146,10 @@ def get_dependent_elements(expansion_dct,count,obj):
 def format_matrix_element(m_e):
     if m_e != 0:
         if isinstance(m_e,conjugate):
-            m_e_str = replace_all(str(conjugate(m_e)), {'.':'', 'alpha':R'{\alpha}', 'beta':R'{\beta}'})
+            m_e_str = replace_all(str(conjugate(m_e)), {'__':'', 'alpha':R'{\alpha}', 'beta':R'{\beta}'})
             return (Symbol(R'{H_{'+str(m_e_str)+R'}}^*'))
         else:
-            m_e_str = replace_all(str(m_e), {',':'', 'alpha':R'{\alpha}', 'beta':R'{\beta}'})
+            m_e_str = replace_all(str(m_e), {'__':'', 'alpha':R'{\alpha}', 'beta':R'{\beta}'})
             return Symbol(R'H_{'+m_e_str+R'}')
     else: return 0
 
@@ -181,23 +157,25 @@ def prune_dependent_elements(real_matrix_elements):
     indep_m_e = []
     m_e = [str(i) for i in real_matrix_elements]
 
-    if 'XA' in m_e:
+    if 'X__A' in m_e:
         for i in m_e:
             if i[0] == 'X' or i[0] == 'Y':
                 indep_m_e.append(Symbol(i))
 
-    elif '.' in m_e[0]:
-        m_e_lists = []
-        for i in m_e:
-            m_e_lists.append(i.split('.'))
-        for i in m_e_lists:
-            if 'alpha' in i[0] and 'X' in i[0]:
-                indep_m_e.append(Symbol('.'.join(i)))
-
-    elif 'XX' in m_e:
+    elif 'X__X' in m_e:
         for i in m_e:
             if i[0] == 'X':
                 indep_m_e.append(Symbol(i))
+
+    elif '__' in m_e[0]:
+        m_e_lists = []
+        for i in m_e:
+            m_e_lists.append(i.split('__'))
+        for i in m_e_lists:
+            if 'alpha' in i[0] and 'X' in i[0]:
+                indep_m_e.append(Symbol('__'.join(i)))
+
+    
     else:
         indep_m_e = real_matrix_elements
 

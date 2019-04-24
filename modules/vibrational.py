@@ -125,8 +125,7 @@ class Term: #ExpansionTerm
         for term in self.expansions:
             term.coeff.compute()
             term.coeff.compile()
-            if term.coeff.sympy_form not in free_parameters:
-                free_parameters.append(term.coeff.sympy_form)
+            
             for i,func in enumerate(term.funcs):
                 func.compute()
                 func.compile()
@@ -143,6 +142,9 @@ class Term: #ExpansionTerm
             elif collect_cartesian_terms == 1:
                 compiled_term = sym.collect(compiled_term,['x','y'],exact=True) 
             compiled_expansions.append(compiled_term)
+
+            if term.coeff.sympy_form not in free_parameters and compiled_term != 0:
+                free_parameters.append(term.coeff.sympy_form)
 
         self.expansions = compiled_expansions
         self.parameters = free_parameters
@@ -742,6 +744,7 @@ def get_matrix_element_expansion(formula,order,constraints,e_coord_system,eigenv
     for c,i in enumerate(expansions):
         for exp in i:
             built_expansions[c] += exp
+            
     return built_expansions,params
 
 constraint_funcs = {'even':even,

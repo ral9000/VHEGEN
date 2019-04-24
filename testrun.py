@@ -2,7 +2,7 @@
 
 import vhegen as VHE
 
-problem = VHE.inp.prepare_input('D3h',"E''","e'+e'",'0,6','testrun')
+problem = VHE.inp.prepare_input('D3h',"E''","e'+e'",'0,3','testrun')
 
 vhegen_instance = VHE.VHEGEN(problem)
 

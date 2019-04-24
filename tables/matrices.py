@@ -68,14 +68,14 @@ matrix_dct = {0: [Matrix([[0,'A_alpha__A_beta'],
                           [0,0,1,1],
                           [0,0,1j,-1j]])*1/sqrt(2)],
 
-              5: [[Matrix([[0,'B_alpha__B_beta'],
+              5: [Matrix([[0,'B_alpha__B_beta'],
                           ['B_beta__B_alpha',0]]),
 
                   Matrix([[0,'B_alpha__B_beta'],
                           ['B_alpha__B_beta',0]]),
 
                   Matrix([[1,0],
-                          [0,1]])]],
+                          [0,1]])],
 
               6: [Matrix([['A__A']]),
 
