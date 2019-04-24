@@ -157,7 +157,7 @@ def prune_dependent_elements(real_matrix_elements):
     indep_m_e = []
     m_e = [str(i) for i in real_matrix_elements]
 
-    if 'X__A' in m_e:
+    if 'X__A' in m_e or 'X__B':
         for i in m_e:
             if i[0] == 'X' or i[0] == 'Y':
                 indep_m_e.append(Symbol(i))
