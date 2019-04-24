@@ -260,7 +260,7 @@ def read_input():
     argparser = configure_parser()
     options = argparser.parse_args()
     config = read_config('config.cfg')
-    if config[u'input'] == u'static':
+    if config[u'input'] == R'static':
         print("Reading static inputs.")
         #static input
         try:
@@ -293,18 +293,18 @@ def read_input():
         except Exception as e:
             print('StaticInputError: Invalid filename argument.')
             exit()
-    elif config[u'input'] == u'dynamic':
+    elif config[u'input'] == R'dynamic':
         print("Entering dynamic input.")
         #enter dynamic input
         symmetry,states,modes,orders,filename = dynamic_input()
-    problem_dct = {'sym':symmetry,
-                   'states':states,
-                    'modes':modes,
-                    'o': orders,
-                    'f': filename}
     else:
         print("Error: 'input' value in config.cfg not found or recognized.")
         exit()
+    problem_dct = {'sym':symmetry,
+                   'states':states,
+                   'modes':modes,
+                   'o': orders,
+                   'f': filename}
     return config,problem_dct
 
 def prepare_input(sym,states,modes,orders,filename='output'):
