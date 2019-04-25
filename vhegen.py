@@ -22,19 +22,30 @@ class VHEGEN:
 
     def set_basis(self,basis):
         if 'E' in [i[0] for i in self.states]:
-            if basis in ['complex','real','both']:
-                self.basis = basis 
-            else:
+            allowed_bases = ['complex','real','both']
+            sat = False
+            for b in allowed_bases:
+                if b in str(basis):
+                    self.basis = basis
+                    sat = True
+            if sat == False:
                 raise Exception('EBasisError: E basis input must be "real", "complex", or "both".')
 
     def set_e_coordinates(self,coord_system): #can be 'pol' or 'cart' 
+        print('coord system:')
+        print(type(coord_system))
+        print(coord_system)
         if hasattr(self,"expansions"):
             raise Exception('ECoordError: e mode coordinate system must be specified before expansion.')
         else:
             if 'E' in [i[0] for i in self.modes]:
-                if coord_system in ['pol','cart','both']:
-                    self.e_coords = coord_system
-                else:
+                allowed_coords = ['pol','cart','both']
+                sat = False
+                for c in allowed_coords:
+                    if c in str(coord_system):
+                        self.e_coords = c
+                        sat = True
+                if sat == False:
                     raise Exception('ECoordError: e mode coordinate system must be "pol", "cart", or "both".')
 
     def return_init(self):
@@ -220,8 +231,8 @@ def main():
     vhegen = VHEGEN(user_input)
     out.log_append(vhegen.return_init())
     t1 = time()
-    vhegen.set_e_coordinates(config[u'e_coords'])
-    vhegen.set_basis(config[u'basis'])
+    vhegen.set_e_coordinates(str(config[u'e_coords']))
+    vhegen.set_basis(str(config[u'basis']))
     vhegen.init_matrix_form()
     out.log_append(vhegen.return_eigenvals())
     vhegen.get_formulas()
@@ -231,9 +242,9 @@ def main():
     count_terms = vhegen.return_termcount()
     out.log_append(count_terms)
     out.log_append(vhegen.return_expansions())
-    if config[u'pdf_out'] == 'true':
+    if 'true' in str(config[u'pdf_out']):
         vhegen.pdflatex()
-    if config[u'log_out'] == 'true':
+    if 'true' in str(config[u'log_out']):
         out.log_write(vhegen.filename,'outputs') 
     print('\nJob complete after '+str(round(time()-t1,3))+' seconds.')
     
