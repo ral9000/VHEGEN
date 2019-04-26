@@ -21,7 +21,8 @@ VHEGEN requires base Python 2 or 3 and external libraries SymPy and NumPy. It is
 
 ## Installation
 
-Installation of the VHEGEN package is as simple as uncompressing the master `VHEGEN` folder to the user's preferred write-allowed directory. This primes the program for procedural use as an executable script, as well as for importing as a package local to the installation directory.
+Installation of the VHEGEN package is as simple as uncompressing the package `zip` to the user's preferred write-allowed directory. This primes the program for procedural use as an executable script, as well as for importing as a package local to the installation directory. To ensure all dependencies are met, one can run `python testrun.py` in the main directory. This will execute a zeroeth to sixth order expansion of the E"x(e'+e') problem in D3h symmetry. If successful, the execution should terminate after printing "Testrun complete without errors." If a TeX distribution is not set up on the machine, one should remove `vhegen_instance.pdflatex()` from `testrun.py` before running.
+
 
 # Using VHEGEN procedurally
 
