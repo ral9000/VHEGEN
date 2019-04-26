@@ -30,10 +30,7 @@ class VHEGEN:
             if sat == False:
                 raise Exception('EBasisError: E basis input must be "real", "complex", or "both".')
 
-    def set_e_coordinates(self,coord_system): #can be 'pol' or 'cart' 
-        print('coord system:')
-        print(type(coord_system))
-        print(coord_system)
+    def set_e_coordinates(self,coord_system):
         if hasattr(self,"expansions"):
             raise Exception('ECoordError: e mode coordinate system must be specified before expansion.')
         else:
