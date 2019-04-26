@@ -1,9 +1,10 @@
 import sympy as sym
 import itertools
 import os
-from modules.glbls import replace_all
+from modules.glbls import replace_all, escapes
 from modules.input import reorder
 from copy import copy,deepcopy
+
 
 class Term: #ExpansionTerm
     def __init__(self,prefactor,coeff,funcs):
@@ -573,6 +574,13 @@ def apply_constraints(local_constraints, p, fitted_term,unfitted_term): #returns
                     return True #return sat
 
         for c in local_constraints:
+            #strip whitespace escape sequences
+            if isinstance(local_constraints[c],set):
+                local_constraints[c] = set([i.strip() for i in local_constraints[c]])
+            else:
+                local_constraints[c] = local_constraints[c].strip()
+            
+            #local_constraints[c] = local_constraints[c].strip() #remove whitespace 
             if type(c) == int: #handle summing-index based constraints
                 if type(local_constraints[c]) == set:
                     len_cond = len(local_constraints[c])
@@ -584,9 +592,11 @@ def apply_constraints(local_constraints, p, fitted_term,unfitted_term): #returns
                         sat_constraints += 1
                 elif constraint_funcs[local_constraints[c]](c,p) == True:
                     sat_constraints += 1
+
             elif type(c.split('&')[0]) == int: #handle pairwise summing-index based constraints
                 if constraint_funcs[local_constraints[c]]([int(i) for i in c.split('&')],p) == True:
                     sat_constraints += 1
+
             elif 'nz' in local_constraints[c]: #handle nz constraints
                 if 'if' in local_constraints[c]: #has condition
                     cond = (local_constraints[c].split(' '))[-2:]

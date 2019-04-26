@@ -27,6 +27,8 @@ state_components_dct = {'A':['A'],
                         'E':['+','-'],
                         'T':['X','Y','Z']}
 
+escapes = ''.join([chr(i) for i in range(1,32)])
+
 def replace_all(string, dct):
     for k in dct:
         string = string.replace(k,dct[k])
