@@ -23,6 +23,17 @@ VHEGEN requires base Python 2 or 3 and external libraries SymPy and NumPy. It is
 
 Installation of the VHEGEN package is as simple as uncompressing the package `zip` to the user's preferred write-allowed directory. This primes the program for procedural use as an executable script, as well as for importing as a package local to the installation directory. To ensure all dependencies are met, one can run `python testrun.py` in the main directory. This will execute a zeroeth to sixth order expansion of the E"x(e'+e') problem in D3h symmetry. If successful, the execution should terminate after printing "Testrun complete without errors." If a TeX distribution is not set up on the machine, one should remove `vhegen_instance.pdflatex()` from `testrun.py` before running.
 
+## File structure of VHEGEN
+
+* `VHEGEN` : The main VHEGEN package directory.
+  * `constraints` : Directory containing constraint lookup files, used by the program to obtain branch formulas for specific vibronic problems.
+  * `modules` : Directory containing Python source code files imported by `vhegen.py`.
+  * `outputs` : Directory for storing generated output files. Output files are of the type: `.log`, `.tex`, `.toc`, and `.pdf`.
+  * `tables` :  Directory containing the lookup tables required by the program in the form of Python files. Included are lookup tables for symmetry eigenvalues, general form of vibronic matrices, and root expansion formulas.
+  * `config.cfg` : The configuration file read during procedural execution of `vhegen.py`.
+  * `requirements.txt` : File storing the program's Python requirements, for use with `pip`. 
+  * `vhegen.py` : The main program file. It can either be ran from terminal or imported into a Python script local to the `VHEGEN` directory.
+  * `testrun.py` : A test script using `vhegen.py` as a package to produce the 0th-6th order expansions for the E"x(e'+e') problem in D3h symmetry.
 
 # Using VHEGEN procedurally
 
@@ -32,7 +43,7 @@ VHEGEN is called procedurally by executing `python vhegen.py` in the main packag
 
  In the configuration file, the user specifies the five parameters: `input`, `pdf_out`, `log_out`, `e_coords`, and `basis`. 
  
- | Parameter  | Values              |
+| Parameter  | Values              |
 |------------|---------------------|
 | `input`    | `static`, `dynamic` |
 | `pdf_out`  | `true`, `false`     |
@@ -87,10 +98,10 @@ Below are the methods which must be sequentially called to generate the full mat
 
 | Method                              | Description                                                                                                                                                                                                                       |
 |-------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `set_e_coords(e_coordinate_system)` | Defines the coordinate system for problems involving e-type vibrational modes. Allowed arguments for `e_coordinate_system` are `cart`, `pol`, and `both`.                                                                                                    |
-| `set_basis(E_component_basis)`      | Defines the E state component basis for problems involving E-type states. Allowed arguments for `E_component_basis` are `complex`, `real`, and `both`.                                                                                                    |
+| `set_e_coords(e_coordinate_system)` | Defines the coordinate system for problems involving e-type vibrational modes. Allowed arguments for `e_coordinate_system` are `cart`, `pol`, and `both`.                                                                         |
+| `set_basis(E_component_basis)`      | Defines the E state component basis for problems involving E-type states. Allowed arguments for `E_component_basis` are `complex`, `real`, and `both`.                                                                            |
 | `get_eigenvals()`                   | Obtains unique matrix elements and their symmetry eigenvalues by initializing attribute `eigenvals`.                                                                                                                              |
-| `get_matrix_form()`                 | Obtain matrix product form of the vibronic Hamiltonian, and stores in attribute `matrix`.                                                                                                                                          |
+| `get_matrix_form()`                 | Obtain matrix product form of the vibronic Hamiltonian, and stores in attribute `matrix`.                                                                                                                                         |
 | `get_formulas()`                    | Performs lookup of root expansion formulas along with the required constraints, storing them in attributes `formulas` and `constraints` respectively.                                                                             |
 | `get_expansions()`                  | Generate term-by-term expansions at all specified orders, storing them in a nested dictionary in attribute `expansions`. If `basis` is set to `both`, expansions in the real basis will be stored in attribute `real_expansions`. |
 
