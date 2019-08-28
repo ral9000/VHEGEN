@@ -129,4 +129,4 @@ The final expansions may be viewed by printing attribute `expansions`. Alternati
 
 * Robert A. Lang (University of Toronto)
 * Riley J. Hickman (University of Toronto)
-* Tao Zeng (Carleton University)
+* Tao Zeng (York University)
